@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  host: localhost
+  user: postgres
+  password: ×××××××
+  port: 5432
+
+development:
+  <<: *default
+  database: tag_management_development
+
+test:
+  <<: *default
+  database: tag_management_test
+
+production:
+  <<: *default
+  database: tag_management_production
+
