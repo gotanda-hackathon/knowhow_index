@@ -29,6 +29,7 @@ config/database.yml
 # TODO Comment out these rules if environment variables can be committed
 .env
 .env.*
+*.swp
 
 ## Environment normalization:
 /.bundle
