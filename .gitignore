@@ -68,3 +68,10 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# 川島追加
+.ruby-version
+.solargraph.yml
+.vscode/**
+.idea/*
+/public/uploads
