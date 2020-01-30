@@ -57,28 +57,14 @@ GitHub上でのプルリクベースの開発手法を採択
 - プルリクフォーマットに則ること
 - コミットメッセージはレビュアーが読んで内容を理解できる端的で分かりやすい日本語とする
 
-## seed_fu の使い方
-db/fixtures ディレクトリを作り、配下に rb ファイルを置く。
-ファイル名に`01_` とプレフィックスを書けば、採番順に実行される。
-
-初期データ流しの実行コマンドは `$ bin/rails db:seed_fu`。
-`$ bin/rails db:seed_fu FILTER=○○` で○○に部分一致するファイルのみ実行。
-
-特徴としては、
-**新規データは作成され、既存データは更新される**
-[**バリデーションは無視される**](https://github.com/mbleigh/seed-fu/blob/34c054c914858c3d7685f83d16dea5c0e2114561/lib/seed-fu/seeder.rb#L74)
-[**データ投入は複数投入に対応して transaction が入っている**](https://github.com/mbleigh/seed-fu/blob/34c054c914858c3d7685f83d16dea5c0e2114561/lib/seed-fu/seeder.rb#L35)
-
-- 単発データの入れ方
-```ruby
-Post.seed do |s|
-  s.id = 1
-  s.title = 'hoge'
-end
-```
-- 複数データの入れ方
-```ruby
-Post.seed(:id,
-          { id: 1, name: 'hoge' },
-          id: 2, title: 'huga')
-```
+## 追加しているgemの補足
+- bullet  
+  デフォルトで、development/test環境では、N+1がある場合は500になるようにしています。
+- [rubycritic](https://github.com/whitesmith/rubycritic)
+  - `$ rubycritic` で静的コード解析ができる
+- [seed-fu](https://github.com/mbleigh/seed-fu)
+  - db/fixtures 配下に初期データをDSLで書き、`$ bin/rails db:seed_fu` で作成・更新できる
+- [settingslogic](https://github.com/binarylogic/settingslogic)
+  - config/application.yml で定数を一元管理できる。 `Settings.hoge` の形式で呼び出せる
+- [simplecov](https://github.com/colszowka/simplecov)
+  - `$ bin/rspec` で coverage/index.html にテストカバレッジ結果を得られる
