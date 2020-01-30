@@ -1,0 +1,81 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    # 自動生成されるファイルや外部ライブラリは制御できないのでチェック対象外
+    - bin/**/*
+    - config/**/*
+    - db/schema.rb
+    - node_modules/**/*
+    - vendor/**/*
+  TargetRubyVersion: 2.7
+
+# ファイル丸ごとブロックに入りそうなファイルは行数制限から外す
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/*.rb
+    - config/routes.rb
+    - spec/factories/*
+    - spec/**/*_spec.rb
+    - 'lib/tasks/auto_annotate_models.rake'
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# コメントなしクラスを許可
+Style/Documentation:
+  Enabled: false
+
+# 1 行の文字数が長くても許可
+Layout/LineLength:
+  Enabled: false
+
+# ABC サイズは Spec ディレクトリを除外
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - 'spec/**/**/*'
+
+# メソッド行数は Spec ディレクトリを除外
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'spec/**/**/*'
+
+################################
+# rubocop-rspec
+# https://github.com/rubocop-hq/rubocop-rspec
+################################
+
+# 日本語での RSpec context を許可
+RSpec/ContextWording:
+  Enabled: false
+
+# エクスペクテーションが長くても許可
+RSpec/ExampleLength:
+  Enabled: false
+
+# 検索処理の確認など、「特定のもののみ抽出できること」のチェック時は、let!を使ってレコードを作成したい
+# RSpecのlet!を制限して無駄なクエリを発行するのはテストが遅くなるため避けたい
+RSpec/LetSetup:
+  Enabled: false
+
+# 複数のエクスペクテーションを許可
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# RSpecでネストが深くなるのは、ある程度は仕方がないと判断
+# ただ、これ以上深くなる場合は、ファイルを分けたり、describeとして分けたりしてほしい
+RSpec/NestedGroups:
+  Max: 4
