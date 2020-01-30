@@ -15,5 +15,18 @@ module TagManagement
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # DBのタイムゾーン設定
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
+
+    # Libディレクトリの読み込み
+    config.paths.add 'lib', eager_load: true
+
+    # 国際化の設定
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
+    config.i18n.available_locales = %i[ja]
+    config.i18n.enforce_available_locales = true
+    config.i18n.default_locale = :ja
   end
 end
