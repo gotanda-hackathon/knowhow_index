@@ -1,5 +1,5 @@
-class Apps::PageController < Apps::BaseController
-  def index
+# frozen_string_literal: true
 
-  end
+class Apps::PageController < Apps::BaseController
+  def index; end
 end
