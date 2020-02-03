@@ -9,13 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: tag_management_development
+  database: knowhow_index_development
 
 test:
   <<: *default
-  database: tag_management_test
+  database: knowhow_index_test
 
 production:
   <<: *default
-  database: tag_management_production
-
+  database: knowhow_index_production
