@@ -11,7 +11,7 @@ require("channels")
 import "../sources/stylesheets/application"
 // all required is
 import "../sources/javascripts/materialize.min"
-import "../sources/javascripts/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min"
+import "../sources/javascripts/perfect-scrollbar/js/perfect-scrollbar.jquery.min"
 // apps
 import "../sources/javascripts/app"
 import "../sources/javascripts/app.init"
@@ -19,8 +19,8 @@ import "../sources/javascripts/app-style-switcher"
 // custom js
 import "../sources/javascripts/custom.min"
 // this page plugin js
-import "../sources/javascripts/chartist/dist/chartist.min"
-// import "../sources/javascripts/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min"
+import "../sources/javascripts/chartist/chartist.min"
+import "../sources/javascripts/chartist-plugin-tooltips/chartist-plugin-tooltip.min"
 import "../sources/javascripts/sparkline/sparkline"
 import "../sources/javascripts/pages/dashboard1"
 
