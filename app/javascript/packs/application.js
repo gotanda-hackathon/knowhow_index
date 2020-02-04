@@ -7,10 +7,10 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("materialize-css")
 
 import "../sources/stylesheets/application"
 // all required is
-import "../sources/javascripts/materialize.min"
 import "../sources/javascripts/perfect-scrollbar/js/perfect-scrollbar.jquery.min"
 // apps
 import "../sources/javascripts/app"
