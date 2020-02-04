@@ -10795,7 +10795,7 @@ body[data-theme="dark"] {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='$to',GradientType=1 ); }
 
 .active-visitors {
-  background: url(../assets/images/cards/active-bg.jpg) no-repeat center top; }
+  background: url(/assets/cards/active-bg.jpg) no-repeat center top; }
 
 /*******************/
 /*Chat widget*/
