@@ -36,7 +36,7 @@ $ bin/rails db:seed_fu
 ```
 
 ## 開発環境のバージョン
-- Ruby -v 2.7.0
+- Ruby -v 2.6.5
 - Ruby on Rails -v 6.0.2.1
 
 ## 開発環境のログイン方法
