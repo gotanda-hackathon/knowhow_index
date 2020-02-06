@@ -70,4 +70,8 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.rails_logger = true
   end
+
+  # ログの整形
+  config.logger = Logger.new(config.paths['log'].first)
+  config.logger.formatter = Logger::Formatter.new
 end
