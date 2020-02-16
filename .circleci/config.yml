@@ -20,7 +20,7 @@ jobs:
       - image: circleci/postgres:9.4
         environment:
           POSTGRES_USER: root
-          POSTGRES_DB: bistapo_test
+          POSTGRES_DB: knowhow_index_test
 
     working_directory: ~/repo
 
