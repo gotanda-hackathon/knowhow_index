@@ -21,6 +21,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: knowhow_index_test
+          POSTGRES_PASSWORD: password
 
     working_directory: ~/repo
 
