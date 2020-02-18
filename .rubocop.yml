@@ -19,15 +19,29 @@ AllCops:
 # ファイル丸ごとブロックに入りそうなファイルは行数制限から外す
 Metrics/BlockLength:
   Exclude:
-    - config/environments/*.rb
-    - config/routes.rb
-    - spec/factories/*
-    - spec/**/*_spec.rb
-    - 'lib/tasks/auto_annotate_models.rake'
+    - spec/**/**/*
+    - lib/tasks/auto_annotate_models.rake
+
+# 1 行の文字数が長くても許可
+Layout/LineLength:
+  Enabled: false
+
+# メソッド行数は Spec ディレクトリを除外
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - spec/**/**/*
 
 # 日本語でのコメントを許可
 Style/AsciiComments:
   Enabled: false
+
+# The `context_dependent` style checks that the last parameter
+# doesn't have braces around it, but requires braces if the
+# second to last parameter is also a hash literal.
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Style/BracesAroundHashParameters
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
 
 # モジュール名::クラス名の定義を許可
 Style/ClassAndModuleChildren:
@@ -37,21 +51,16 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
-# 1 行の文字数が長くても許可
-Layout/LineLength:
-  Enabled: false
-
 # ABC サイズは Spec ディレクトリを除外
 Metrics/AbcSize:
   Max: 20
   Exclude:
-    - 'spec/**/**/*'
+    - spec/**/**/*
 
-# メソッド行数は Spec ディレクトリを除外
-Metrics/MethodLength:
-  Max: 15
+# 桁揃えが綺麗にならないことが多いので migration は除外
+Layout/ExtraSpacing:
   Exclude:
-    - 'spec/**/**/*'
+    - db/migrate/*.rb
 
 ################################
 # rubocop-rspec
