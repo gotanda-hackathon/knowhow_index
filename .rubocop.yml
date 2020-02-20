@@ -36,13 +36,6 @@ Metrics/MethodLength:
 Style/AsciiComments:
   Enabled: false
 
-# The `context_dependent` style checks that the last parameter
-# doesn't have braces around it, but requires braces if the
-# second to last parameter is also a hash literal.
-# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Style/BracesAroundHashParameters
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
-
 # モジュール名::クラス名の定義を許可
 Style/ClassAndModuleChildren:
   Enabled: false
