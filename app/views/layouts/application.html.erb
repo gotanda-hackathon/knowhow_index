@@ -33,16 +33,16 @@
         <!-- ============================================================== -->
         <!-- Logo you can find that scss in header.scss -->
         <!-- ============================================================== -->
-        <a href="javascript:void(0)" class="brand-logo">
-                        <span class="icon">
-                            <img class="light-logo" src="/assets//logo-light-icon.png">
-                            <img class="dark-logo" src="/assets//logo-icon.png">
-                        </span>
-                        <span class="text">
-                            <img class="light-logo" src="/assets//logo-light-text.png">
-                            <img class="dark-logo" src="/assets//logo-text.png">
-                        </span>
-        </a>
+        <%= link_to root_path, data: { turbolinks: false }, class: 'brand-logo' do %>
+          <span class="icon">
+              <img class="light-logo" src="/assets//logo-light-icon.png">
+              <img class="dark-logo" src="/assets//logo-icon.png">
+          </span>
+          <span class="text">
+              <img class="light-logo" src="/assets//logo-light-text.png">
+              <img class="dark-logo" src="/assets//logo-text.png">
+          </span>
+        <% end %>
         <!-- ============================================================== -->
         <!-- Logo you can find that scss in header.scss -->
         <!-- ============================================================== -->

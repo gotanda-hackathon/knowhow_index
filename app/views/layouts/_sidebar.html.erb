@@ -1,6 +1,11 @@
+<%=
+  p '*'*30
+  p params[:controller]
+  p '*'*30
+  company_active = params[:controller] == 'companies' ? 'active' : ''
+%>
 <aside class="left-sidebar">
   <ul id="slide-out" class="sidenav">
-
     <li>
       <ul class="collapsible">
         <li class="small-cap"><span class="hide-menu">PERSONAL</span></li>
@@ -42,17 +47,12 @@
             </ul>
           </div>
         </li>
-        <li class="small-cap"><span class="hide-menu">Apps</span></li>
-        <li>
-          <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">how_to_reg</i><span class="hide-menu"> 管理者権限</span></a>
-          <div class="collapsible-body">
-            <ul>
-              <%= link_to companies_path, data: { turbolinks: false } do %>
-                <i class="material-icons">location_city</i>
-                <span class="hide-menu"><%= t('views.company.index') %></span>
-              <% end %>
-            </ul>
-          </div>
+        <li class="small-cap"><span class="hide-menu"> 管理者権限</span></li>
+        <li class="<%= company_active %>">
+          <%= link_to companies_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
+            <i class="material-icons">location_city</i>
+            <span class="hide-menu"><%= t('views.company.index') %></span>
+          <% end %>
         </li>
         <li class="small-cap"><span class="hide-menu">UI</span></li>
         <li>
