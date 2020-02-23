@@ -4,32 +4,16 @@
       <div class="card-content">
         <div class="d-flex align-items-center">
           <div>
-            <h5 class="card-title">利用企業一覧</h5>
+            <h5 class="card-title"><%= t('views.company.index') %></h5>
           </div>
         </div>
         <div class="table-responsive m-b-20">
           <table class="">
             <thead>
-            <tr>
-              <th>ID</th>
-              <th>企業名</th>
-              <th>作成日</th>
-            </tr>
+              <%= render 'thead' %>
             </thead>
             <tbody>
-            <% @companies.each.with_index(1) do |company, i| %>
-              <tr>
-                <td>
-                  <%= i %>
-                </td>
-                <td class="blue-grey-text  text-darken-4 font-medium">
-                  <%= company.name %>
-                </td>
-                <td>
-                  <%= company.created_at %>
-                </td>
-              </tr>
-            <% end %>
+              <%= render partial: 'tbody', locals: { companies: @companies }%>
             </tbody>
           </table>
         </div>

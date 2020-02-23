@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      company: 企業
+    attributes:
+      default: &default
+        id: ID
+        name: 氏名
+        email: メールアドレス
+        email_confirmation: メールアドレス（確認用）
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        title: タイトル
+        content: 内容
+        created_at: 作成日
+      company:
+        <<: *default
+        name: 企業名
+  activemodel:
+    attributes:
+      default: &default

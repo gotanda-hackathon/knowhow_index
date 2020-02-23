@@ -1,0 +1,13 @@
+<% companies.each.with_index(1) do |company, i| %>
+  <tr>
+    <td>
+      <%= i %>
+    </td>
+    <td class="blue-grey-text  text-darken-4 font-medium">
+      <%= company.name %>
+    </td>
+    <td>
+      <%= company.show_created_at %>
+    </td>
+  </tr>
+<% end %>
