@@ -59,9 +59,9 @@ end
 # 追加 gem
 gem 'annotate'
 gem 'carrierwave'
+gem 'draper'
 gem 'kaminari'
 gem 'migration_comments'
-gem 'nested_form'
 gem 'pg'
 gem 'rmagick'
 gem 'seed-fu'
