@@ -47,7 +47,7 @@
           <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">how_to_reg</i><span class="hide-menu"> 管理者権限</span></a>
           <div class="collapsible-body">
             <ul>
-              <%= link_to companies_path do %>
+              <%= link_to companies_path, data: { turbolinks: false } do %>
                 <i class="material-icons">location_city</i>
                 <span class="hide-menu">利用企業一覧</span>
               <% end %>
