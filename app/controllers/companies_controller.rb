@@ -19,8 +19,9 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to @company, notice: 'Company was successfully created.'
+      redirect_to companies_url, flash: { green: t('views.flash.create_success') }
     else
+      flash.now[:red] = t('views.flash.create_danger')
       render :new
     end
   end
