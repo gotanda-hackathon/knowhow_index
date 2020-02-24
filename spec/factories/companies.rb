@@ -11,6 +11,6 @@
 #
 FactoryBot.define do
   factory :company do
-    name { 'MyString' }
+    sequence(:name) { |n| "テスト企業#{n}" }
   end
 end

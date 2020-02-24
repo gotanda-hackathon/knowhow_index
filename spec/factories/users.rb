@@ -24,11 +24,23 @@
 #
 FactoryBot.define do
   factory :user do
-    name { 'MyString' }
-    email { 'MyString' }
-    password_digest { 'MyString' }
-    grader { false }
-    administrator { false }
-    company { nil }
+    sequence(:name) { |n| "テストユーザー#{n}" }
+    sequence(:email) { |n| "tester#{n}@example.com" }
+    password { 'test1234' }
+    association :company
+
+    trait :normal_user do
+      administrator { false }
+      grader { false }
+    end
+
+    trait :grader do
+      grader { true }
+    end
+
+    trait :administrator do
+      administrator { true }
+      grader { true }
+    end
   end
 end
