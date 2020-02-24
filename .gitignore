@@ -71,3 +71,5 @@ yarn-debug.log*
 .vscode/**
 .idea/*
 /public/uploads
+
+/config/master.key
