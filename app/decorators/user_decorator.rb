@@ -4,10 +4,18 @@ class UserDecorator < Draper::Decorator
   delegate_all
 
   def show_grader
-    grader ? 'あり' : 'なし'
+    if grader
+      helpers.content_tag(:span, 'あり', class: 'badge orange white-text')
+    else
+      helpers.content_tag(:span, 'なし', class: 'badge grey white-text')
+    end
   end
 
   def show_administrator
-    administrator ? 'あり' : 'なし'
+    if administrator
+      helpers.content_tag(:span, 'あり', class: 'badge orange white-text')
+    else
+      helpers.content_tag(:span, 'なし', class: 'badge grey white-text')
+    end
   end
 end

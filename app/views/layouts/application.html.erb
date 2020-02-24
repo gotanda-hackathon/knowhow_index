@@ -10,6 +10,7 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
+<% if logged_in? %>
 <body>
 <div class="main-wrapper" id="main-wrapper">
   <!-- ============================================================== -->
@@ -382,147 +383,147 @@
                 <div class="message-center">
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_1' data-user-id='1'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/1.jpg" alt="user" class="circle">
-                                                <span class="profile-status online pull-right" data-status="online"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Chris Evans</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:30 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/1.jpg" alt="user" class="circle">
+                      <span class="profile-status online pull-right" data-status="online"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Chris Evans</h5>
+                      <span class="mail-desc">Just see the my admin!</span>
+                      <span class="time">9:30 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_2' data-user-id='2'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/2.jpg" alt="user" class="circle">
-                                                <span class="profile-status busy pull-right" data-status="busy"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Ray Hudson</h5>
-                                                <span class="mail-desc">I've sung a song! See you at</span>
-                                                <span class="time">9:10 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/2.jpg" alt="user" class="circle">
+                      <span class="profile-status busy pull-right" data-status="busy"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Ray Hudson</h5>
+                      <span class="mail-desc">I've sung a song! See you at</span>
+                      <span class="time">9:10 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_3' data-user-id='3'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/3.jpg" alt="user" class="circle">
-                                                <span class="profile-status away pull-right" data-status="away"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Lb James</h5>
-                                                <span class="mail-desc">I am a singer!</span>
-                                                <span class="time">9:08 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/3.jpg" alt="user" class="circle">
+                      <span class="profile-status away pull-right" data-status="away"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Lb James</h5>
+                      <span class="mail-desc">I am a singer!</span>
+                      <span class="time">9:08 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_4' data-user-id='4'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/4.jpg" alt="user" class="circle">
-                                                <span class="profile-status offline pull-right" data-status="offline"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Don Andres</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:02 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/4.jpg" alt="user" class="circle">
+                      <span class="profile-status offline pull-right" data-status="offline"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Don Andres</h5>
+                      <span class="mail-desc">Just see the my admin!</span>
+                      <span class="time">9:02 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_5' data-user-id='5'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/1.jpg" alt="user" class="circle">
-                                                <span class="profile-status online pull-right" data-status="online"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Chris Evans</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:30 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/1.jpg" alt="user" class="circle">
+                      <span class="profile-status online pull-right" data-status="online"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Chris Evans</h5>
+                      <span class="mail-desc">Just see the my admin!</span>
+                      <span class="time">9:30 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_6' data-user-id='6'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/2.jpg" alt="user" class="circle">
-                                                <span class="profile-status busy pull-right" data-status="busy"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Ray Hudson</h5>
-                                                <span class="mail-desc">I've sung a song! See you at</span>
-                                                <span class="time">9:10 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/2.jpg" alt="user" class="circle">
+                      <span class="profile-status busy pull-right" data-status="busy"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Ray Hudson</h5>
+                      <span class="mail-desc">I've sung a song! See you at</span>
+                      <span class="time">9:10 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_7' data-user-id='7'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/3.jpg" alt="user" class="circle">
-                                                <span class="profile-status away pull-right" data-status="away"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Lb James</h5>
-                                                <span class="mail-desc">I am a singer!</span>
-                                                <span class="time">9:08 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/3.jpg" alt="user" class="circle">
+                      <span class="profile-status away pull-right" data-status="away"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Lb James</h5>
+                      <span class="mail-desc">I am a singer!</span>
+                      <span class="time">9:08 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_8' data-user-id='8'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/4.jpg" alt="user" class="circle">
-                                                <span class="profile-status offline pull-right" data-status="offline"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Don Andres</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:02 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/4.jpg" alt="user" class="circle">
+                      <span class="profile-status offline pull-right" data-status="offline"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Don Andres</h5>
+                      <span class="mail-desc">Just see the my admin!</span>
+                      <span class="time">9:02 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_9' data-user-id='9'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/1.jpg" alt="user" class="circle">
-                                                <span class="profile-status online pull-right" data-status="online"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Chris Evans</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:30 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/1.jpg" alt="user" class="circle">
+                      <span class="profile-status online pull-right" data-status="online"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Chris Evans</h5>
+                      <span class="mail-desc">Just see the my admin!</span>
+                      <span class="time">9:30 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_10' data-user-id='10'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/2.jpg" alt="user" class="circle">
-                                                <span class="profile-status busy pull-right" data-status="busy"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Ray Hudson</h5>
-                                                <span class="mail-desc">I've sung a song! See you at</span>
-                                                <span class="time">9:10 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/2.jpg" alt="user" class="circle">
+                      <span class="profile-status busy pull-right" data-status="busy"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Ray Hudson</h5>
+                      <span class="mail-desc">I've sung a song! See you at</span>
+                      <span class="time">9:10 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_11' data-user-id='11'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/3.jpg" alt="user" class="circle">
-                                                <span class="profile-status away pull-right" data-status="away"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Lb James</h5>
-                                                <span class="mail-desc">I am a singer!</span>
-                                                <span class="time">9:08 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/3.jpg" alt="user" class="circle">
+                      <span class="profile-status away pull-right" data-status="away"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Lb James</h5>
+                      <span class="mail-desc">I am a singer!</span>
+                      <span class="time">9:08 AM</span>
+                    </span>
                   </a>
                   <!-- Message -->
                   <a href="#" class="user-info" id='chat_user_12' data-user-id='12'>
-                                            <span class="user-img">
-                                                <img src="/assets//users/4.jpg" alt="user" class="circle">
-                                                <span class="profile-status offline pull-right" data-status="offline"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Don Andres</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:02 AM</span>
-                                            </span>
+                    <span class="user-img">
+                      <img src="/assets//users/4.jpg" alt="user" class="circle">
+                      <span class="profile-status offline pull-right" data-status="offline"></span>
+                    </span>
+                    <span class="mail-contnet">
+                      <h5>Don Andres</h5>
+                      <span class="mail-desc">Just see the my admin!</span>
+                      <span class="time">9:02 AM</span>
+                    </span>
                   </a>
                 </div>
               </li>
@@ -602,4 +603,14 @@
   <!-- ============================================================== -->
 </div>
 </body>
+<% else %>
+<body>
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+  </div>
+</body>
+<% end %>
 </html>

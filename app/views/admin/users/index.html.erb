@@ -7,7 +7,7 @@
             <h5 class="card-title"><%= t('views.user.index') %></h5>
           </div>
           <div class="ml-auto">
-            <%= link_to new_company_user_path(current_user.company), data: { turbolinks: false }, class: "btn blue" do %>
+            <%= link_to new_admin_user_path, data: { turbolinks: false }, class: "btn blue" do %>
               <span><%= t('views.default.new') %></span>
               <i class="material-icons right">add</i>
             <% end %>
