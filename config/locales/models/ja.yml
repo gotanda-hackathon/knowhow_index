@@ -16,6 +16,11 @@ ja:
       company:
         <<: *default
         name: 企業名
+      user:
+        <<: *default
+        admin: 管理者権限
+        grader: 採点者権限
+        company_id: 企業名
   activemodel:
     attributes:
       default: &default

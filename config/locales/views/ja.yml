@@ -19,6 +19,14 @@ ja:
       new: "企業作成"
       create: "企業作成"
       update: "企業編集"
+    user:
+      index: "アカウント一覧"
+      mypage: "マイページ"
+      show: "アカウント詳細"
+      edit: "アカウント編集"
+      new: "アカウント作成"
+      create: "アカウント作成"
+      update: "アカウント編集"
     flash:
       create_success: "登録いたしました"
       create_danger: "登録に失敗しました"
