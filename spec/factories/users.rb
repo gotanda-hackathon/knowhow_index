@@ -29,8 +29,7 @@ FactoryBot.define do
     password { 'test1234' }
     association :company
 
-    trait :normal_user do
-      administrator { false }
+    trait :not_grader do
       grader { false }
     end
 
@@ -38,9 +37,12 @@ FactoryBot.define do
       grader { true }
     end
 
+    trait :not_administrator do
+      administrator { false }
+    end
+
     trait :administrator do
       administrator { true }
-      grader { true }
     end
   end
 end

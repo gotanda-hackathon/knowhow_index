@@ -9,8 +9,8 @@ describe '管理画面：企業作成', type: :system do
       visit new_admin_company_path
     end
 
-    context '権限が normal_user のとき' do
-      let(:login_user) { FactoryBot.create(:user, :normal_user) }
+    context '権限が not_administrator のとき' do
+      let(:login_user) { FactoryBot.create(:user, :not_administrator) }
 
       it_behaves_like 'トップページにリダイレクト'
     end
