@@ -5,7 +5,7 @@
 # Table name: users # ユーザーテーブル
 #
 #  id                          :bigint           not null, primary key
-#  admin(管理者フラグ)         :boolean          default("false"), not null
+#  administrator(管理者フラグ) :boolean          default("false"), not null
 #  email(メールアドレス)       :string           not null
 #  grader(採点者フラグ)        :boolean          default("false"), not null
 #  name(氏名)                  :string           not null

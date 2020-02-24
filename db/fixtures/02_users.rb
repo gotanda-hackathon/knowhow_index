@@ -6,6 +6,6 @@ User.seed do |s|
   s.email = Rails.application.credentials.admin[:email]
   s.password = Rails.application.credentials.admin[:password]
   s.grader = true
-  s.admin = true
+  s.administrator = true
   s.company = Company.find_by(name: 'ワンスター')
 end

@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_233815) do
     t.string "email", null: false, comment: "メールアドレス"
     t.string "password_digest", null: false, comment: "パスワード"
     t.boolean "grader", default: false, null: false, comment: "採点者フラグ"
-    t.boolean "admin", default: false, null: false, comment: "管理者フラグ"
+    t.boolean "administrator", default: false, null: false, comment: "管理者フラグ"
     t.bigint "company_id", null: false, comment: "企業ID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

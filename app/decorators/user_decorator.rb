@@ -7,7 +7,7 @@ class UserDecorator < Draper::Decorator
     grader ? 'あり' : 'なし'
   end
 
-  def show_admin
-    admin ? 'あり' : 'なし'
+  def show_administrator
+    administrator ? 'あり' : 'なし'
   end
 end
