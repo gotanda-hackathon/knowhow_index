@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :companies, expect: [:show]
   resources :users, expect: [:show]
+
+  namespace :admin do
+    resources :companies, expect: [:show]
+  end
 end

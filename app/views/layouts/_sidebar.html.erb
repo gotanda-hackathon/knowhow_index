@@ -1,5 +1,5 @@
 <%=
-  company_active = params[:controller] == 'companies' ? 'active' : ''
+  admin_company_active = params[:controller] == 'admin/companies' ? 'active' : ''
   user_active = params[:controller] == 'users' ? 'active' : ''
 %>
 <aside class="left-sidebar">
@@ -15,8 +15,8 @@
         </li>
         <% if current_user.administrator? %>
           <li class="small-cap"><span class="hide-menu"> 管理者機能</span></li>
-          <li class="<%= company_active %>">
-            <%= link_to companies_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
+          <li class="<%= admin_company_active %>">
+            <%= link_to admin_companies_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
               <i class="material-icons">location_city</i>
               <span class="hide-menu"><%= t('views.company.index') %></span>
             <% end %>

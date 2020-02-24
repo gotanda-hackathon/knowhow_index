@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CompaniesController < ApplicationController
+class Admin::CompaniesController < Admin::BaseController
   before_action :set_company, only: %i[edit update destroy]
 
   def index
@@ -17,7 +17,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to companies_url, flash: { green: t('views.flash.create_success') }
+      redirect_to admin_companies_url, flash: { green: t('views.flash.create_success') }
     else
       flash.now[:red] = t('views.flash.create_danger')
       render :new
@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to edit_company_url(@company), flash: { green: t('views.flash.update_success') }
+      redirect_to edit_admin_company_url(@company), flash: { green: t('views.flash.update_success') }
     else
       flash.now[:red] = t('views.flash.update_danger')
       render :edit
@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company.destroy!
-    redirect_to companies_url, flash: { green: t('views.flash.destroy_success') }
+    redirect_to admin_companies_url, flash: { green: t('views.flash.destroy_success') }
   end
 
   private

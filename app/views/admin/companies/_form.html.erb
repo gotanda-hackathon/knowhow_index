@@ -8,11 +8,11 @@
           </div>
         </div>
         <div class="table-responsive m-b-20">
-          <%= form_with model: company, local: true do |f| %>
+          <%= form_with model: [:admin, company], local: true do |f| %>
             <div class="row">
               <div class="input-field col s6">
-                <%= f.text_field :name %>
                 <%= f.label :name %>
+                <%= f.text_field :name %>
                 <p class="red-text text-darken-4"><%= company.error_messages_for :name %></p>
               </div>
             </div>
