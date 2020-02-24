@@ -3,17 +3,15 @@
     <td><%= i %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= user.company.name %></td>
     <td><%= user.show_grader %></td>
-    <td><%= user.show_administrator %></td>
     <td id="edit_btn_<%= user.id %>">
-      <%= link_to edit_user_path(user), data: { turbolinks: false }, class: "btn green" do %>
+      <%= link_to edit_company_user_path(current_user.company, user), data: { turbolinks: false }, class: "btn green" do %>
         <%= t('views.default.edit') %>
         <i class="material-icons right">edit</i>
       <% end %>
     </td>
     <td id="delete_btn_<%= user.id %>">
-      <%= link_to user_path(user), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
+      <%= link_to company_user_path(current_user.company, user), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
         <%= t('views.default.destroy') %>
         <i class="material-icons right">delete</i>
       <% end %>

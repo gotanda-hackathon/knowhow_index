@@ -2,9 +2,10 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
+  before_action :not_accessible_different_company_user_data, only: %i[edit update destroy]
 
   def index
-    @users = UserDecorator.decorate_collection(User.all).includes(:company)
+    @users = UserDecorator.decorate_collection(User.same_as_current_user_company(current_user)).includes(:company)
   end
 
   def new
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_url, flash: { green: t('views.flash.create_success') }
+      redirect_to company_users_url(current_user.company), flash: { green: t('views.flash.create_success') }
     else
       flash.now[:red] = t('views.flash.create_danger')
       render :new
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to edit_user_url(@user), flash: { green: t('views.flash.update_success') }
+      redirect_to edit_company_user_url(current_user.company, @user), flash: { green: t('views.flash.update_success') }
     else
       flash.now[:red] = t('views.flash.update_danger')
       render :edit
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy!
-    redirect_to users_url, flash: { green: t('views.flash.destroy_success') }
+    redirect_to company_users_url(current_user.company), flash: { green: t('views.flash.destroy_success') }
   end
 
   private
@@ -45,6 +46,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :grader, :administrator, :company_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :grader, :company_id)
+  end
+
+  def not_accessible_different_company_user_data
+    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } if current_user.company != @user.company
   end
 end
