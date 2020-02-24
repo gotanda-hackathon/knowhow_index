@@ -1,6 +1,7 @@
 <%=
-  admin_company_active = params[:controller] == 'admin/companies' ? 'active' : ''
   user_active = params[:controller] == 'users' ? 'active' : ''
+  admin_company_active = params[:controller] == 'admin/companies' ? 'active' : ''
+  admin_user_active = params[:controller] == 'admin/users' ? 'active' : ''
 %>
 <aside class="left-sidebar">
   <ul id="slide-out" class="sidenav">
@@ -21,8 +22,8 @@
               <span class="hide-menu"><%= t('views.company.index') %></span>
             <% end %>
           </li>
-          <li class="<%= user_active %>">
-            <%= link_to users_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
+          <li class="<%= admin_user_active %>">
+            <%= link_to admin_users_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
               <i class="material-icons">supervised_user_circle</i>
               <span class="hide-menu"><%= t('views.user.index') %></span>
             <% end %>
