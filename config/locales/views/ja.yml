@@ -27,6 +27,11 @@ ja:
       new: "アカウント作成"
       create: "アカウント作成"
       update: "アカウント編集"
+    session:
+      login: "ログイン"
+      logout: "ログアウト"
+    front:
+      top: "ノウハウ管理"
     flash:
       create_success: "登録いたしました"
       create_danger: "登録に失敗しました"

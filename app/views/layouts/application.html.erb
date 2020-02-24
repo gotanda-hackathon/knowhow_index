@@ -10,6 +10,7 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
+<% if logged_in? %>
 <body>
 <div class="main-wrapper" id="main-wrapper">
   <!-- ============================================================== -->
@@ -602,4 +603,14 @@
   <!-- ============================================================== -->
 </div>
 </body>
+<% else %>
+<body>
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+  </div>
+</body>
+<% end %>
 </html>
