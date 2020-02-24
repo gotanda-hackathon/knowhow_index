@@ -1,50 +1,19 @@
 <%=
   company_active = params[:controller] == 'companies' ? 'active' : ''
+  user_active = params[:controller] == 'users' ? 'active' : ''
 %>
 <aside class="left-sidebar">
   <ul id="slide-out" class="sidenav">
     <li>
       <ul class="collapsible">
-        <li class="small-cap"><span class="hide-menu">PERSONAL</span></li>
-        <li>
-          <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">dashboard</i><span class="hide-menu"> Dashboard</span></a>
-          <div class="collapsible-body">
-            <ul>
-              <li><a href="index.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-1</span></a></li>
-              <li><a href="index2.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-2</span></a></li>
-              <li><a href="index3.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-3</span></a></li>
-              <li><a href="index4.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-4</span></a></li>
-            </ul>
-          </div>
+        <li class="small-cap"><span class="hide-menu">各種機能</span></li>
+        <li class="<%= user_active %>">
+          <%= link_to users_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
+            <i class="material-icons">people</i>
+            <span class="hide-menu"><%= t('views.user.index') %></span>
+          <% end %>
         </li>
-        <li>
-          <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">equalizer</i><span class="hide-menu"> Sidebar Types </span></a>
-          <div class="collapsible-body">
-            <ul>
-              <li><a href="sidebar-type-minisidebar.html"><i class="material-icons">photo_size_select_small</i><span class="hide-menu">Minisidebar</span></a></li>
-              <li><a href="sidebar-type-iconbar.html"><i class="material-icons">picture_in_picture</i><span class="hide-menu">Icon Sidebar</span></a></li>
-              <li><a href="sidebar-type-overlay.html"><i class="material-icons">low_priority</i><span class="hide-menu">Overlay Sidebar</span></a></li>
-              <li><a href="sidebar-type-fullsidebar.html"><i class="material-icons">present_to_all</i><span class="hide-menu">Full Sidebar</span></a></li>
-              <li><a href="sidebar-type-horizontalsidebar.html"><i class="material-icons">power_input</i><span class="hide-menu">Horizontal Sidebar</span></a></li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">library_books</i><span class="hide-menu"> Page Layouts </span></a>
-          <div class="collapsible-body">
-            <ul>
-              <li><a href="layout-inner-fixed-left-sidebar.html"><i class="material-icons">format_align_left</i><span class="hide-menu">Inner Fixed Left Sidebar</span></a></li>
-              <li><a href="layout-inner-fixed-right-sidebar.html"><i class="material-icons">format_align_right</i><span class="hide-menu">Inner Fixed Right Sidebar</span></a></li>
-              <li><a href="layout-inner-left-sidebar.html"><i class="material-icons">format_indent_increase</i><span class="hide-menu">Inner Left Sidebar</span></a></li>
-              <li><a href="layout-inner-right-sidebar.html"><i class="material-icons">format_indent_decrease</i><span class="hide-menu">Inner Right Sidebar</span></a></li>
-              <li><a href="page-layout-fixed-header.html"><i class="material-icons">line_weight</i><span class="hide-menu">Fixed Header</span></a></li>
-              <li><a href="page-layout-fixed-sidebar.html"><i class="material-icons">line_weight</i><span class="hide-menu">Fixed Sidebar</span></a></li>
-              <li><a href="page-layout-fixed-header-sidebar.html"><i class="material-icons">format_align_center</i><span class="hide-menu">Fixed Header & Sidebar</span></a></li>
-              <li><a href="page-layout-boxed-layout.html"><i class="material-icons">format_line_spacing</i><span class="hide-menu">Boxed Layout</span></a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="small-cap"><span class="hide-menu"> 管理者権限</span></li>
+        <li class="small-cap"><span class="hide-menu"> 管理者機能</span></li>
         <li class="<%= company_active %>">
           <%= link_to companies_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
             <i class="material-icons">location_city</i>

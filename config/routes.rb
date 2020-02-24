@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'toppage#index'
 
   resources :companies, expect: [:show]
+  resources :users, expect: [:show]
 end
