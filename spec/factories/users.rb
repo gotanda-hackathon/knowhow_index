@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users # ユーザーテーブル
@@ -22,9 +24,9 @@
 #
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    email { "MyString" }
-    password_digest { "MyString" }
+    name { 'MyString' }
+    email { 'MyString' }
+    password_digest { 'MyString' }
     grader { false }
     admin { false }
     company { nil }
