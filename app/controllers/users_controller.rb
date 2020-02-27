@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :not_accessible_different_company_user_data, only: %i[edit update destroy]
 
   def index
-    @users = UserDecorator.decorate_collection(User.same_as_current_user_company(current_user)).includes(:company)
+    @users = User.same_as_current_user_company(current_user).page(params[:page]).per(Settings.pagination.default).decorate
   end
 
   def new

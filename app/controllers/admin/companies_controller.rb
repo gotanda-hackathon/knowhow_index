@@ -4,7 +4,7 @@ class Admin::CompaniesController < Admin::BaseController
   before_action :set_company, only: %i[edit update destroy]
 
   def index
-    @companies = CompanyDecorator.decorate_collection(Company.all)
+    @companies = Company.all.page(params[:page]).per(Settings.pagination.default).decorate
   end
 
   def new

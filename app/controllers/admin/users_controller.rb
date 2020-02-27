@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: %i[edit update destroy]
 
   def index
-    @users = UserDecorator.decorate_collection(User.all).includes(:company)
+    @users = User.all.includes(:company).page(params[:page]).per(Settings.pagination.default).decorate
   end
 
   def new

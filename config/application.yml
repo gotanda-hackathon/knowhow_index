@@ -1,6 +1,6 @@
 defaults: &defaults
-  tags:
-    test: 'hoge'
+  pagination:
+    default: 10
 
 development:
   <<: *defaults
