@@ -38,7 +38,6 @@ describe '管理画面：アカウント編集', type: :system do
             expect(page).to have_content '更新いたしました'
             expect(page).to have_field '氏名', with: '編集テストアカウント'
             expect(page).to have_field 'メールアドレス', with: 'edit@example.com'
-
           end
         end
       end
