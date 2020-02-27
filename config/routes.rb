@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     resources :companies, expect: [:show]
     resources :users, expect: [:show]
   end
+
+  match '*path', to: 'application#error404', via: :all
 end
