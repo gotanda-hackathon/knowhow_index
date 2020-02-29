@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
   before_action :not_accessible_different_company_user_data, only: %i[edit update destroy]
-  before_action :not_grader, only:  %i[new edit update destroy]
+  before_action :not_grader, only: %i[new edit update destroy]
 
   def index
     @users = User.same_as_current_user_company(current_user).order(:id).page(params[:page]).per(Settings.pagination.default).decorate
