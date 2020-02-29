@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'フロント画面：アカウント編集', type: :system do
+describe 'フロント画面：ログインアカウントと同じ企業に紐づくアカウントの編集', type: :system do
   context 'ログインしているとき' do
     let!(:user) { FactoryBot.create(:user, company: login_user.company) }
 
@@ -11,7 +11,7 @@ describe 'フロント画面：アカウント編集', type: :system do
 
       before do
         sign_in_as(login_user)
-        visit edit_company_user_path(login_user.company, login_user)
+        visit edit_company_user_path(login_user.company, user)
       end
 
       it_behaves_like 'トップページにリダイレクト'
@@ -38,7 +38,7 @@ describe 'フロント画面：アカウント編集', type: :system do
 
         it '情報を編集・更新できること' do
           aggregate_failures do
-            expect(page).to have_current_path edit_company_user_path(user.company, user)
+            expect(page).to have_current_path edit_company_user_path(login_user.company, user)
             expect(page).to have_css '.green.lighten-4'
             expect(page).to have_content '更新いたしました'
             expect(page).to have_field '氏名', with: '編集テストアカウント'

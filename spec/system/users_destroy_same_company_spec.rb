@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'フロント画面：アカウント削除', type: :system do
+describe 'フロント画面：ログインアカウントと同じ企業に紐づくアカウントの削除', type: :system do
   context 'ログインしているとき' do
     let!(:user) { FactoryBot.create(:user, name: '削除データ', company: login_user.company) }
 
