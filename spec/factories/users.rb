@@ -28,6 +28,8 @@ FactoryBot.define do
     sequence(:email) { |n| "tester#{n}@example.com" }
     password { 'test1234' }
     association :company
+    grader { [true, false].sample }
+    administrator { [true, false].sample }
 
     trait :not_grader do
       grader { false }
