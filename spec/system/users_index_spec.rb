@@ -7,6 +7,14 @@ describe 'フロント画面：アカウント一覧', type: :system do
     let!(:user1) { FactoryBot.create(:user, company: login_user.company) }
     let!(:user2) { FactoryBot.create(:user) }
 
+    shared_examples '一覧表示' do
+      it 'ログインアカウントと同じ企業アカウントの情報だけが表示されていること' do
+        expect_outline_of(login_user)
+        expect_outline_of(user1)
+        expect_noy_outline_of(user2)
+      end
+    end
+
     before do
       sign_in_as(login_user)
       visit company_users_path(login_user)
@@ -15,11 +23,7 @@ describe 'フロント画面：アカウント一覧', type: :system do
     context '権限が not_grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :not_grader) }
 
-      it 'ログインアカウントと同じ企業アカウントの情報だけが表示されていること' do
-        expect_outline_of(login_user)
-        expect_outline_of(user1)
-        expect_noy_outline_of(user2)
-      end
+      it_behaves_like '一覧表示'
 
       it '新規作成ボタンが存在しないこと' do
         expect(page).not_to have_link '新規作成'
@@ -37,11 +41,7 @@ describe 'フロント画面：アカウント一覧', type: :system do
     context '権限が grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :grader) }
 
-      it 'ログインアカウントと同じ企業アカウントの情報だけが表示されていること' do
-        expect_outline_of(login_user)
-        expect_outline_of(user1)
-        expect_noy_outline_of(user2)
-      end
+      it_behaves_like '一覧表示'
 
       it '新規作成ボタンが存在すること' do
         expect(page).to have_link '新規作成'
