@@ -17,7 +17,7 @@ describe 'フロント画面：アカウント一覧', type: :system do
 
     before do
       sign_in_as(login_user)
-      visit company_users_path(login_user)
+      visit company_users_path(login_user.company)
     end
 
     context '権限が not_grader のとき' do
@@ -58,8 +58,10 @@ describe 'フロント画面：アカウント一覧', type: :system do
   end
 
   context 'ログインしていないとき' do
+    let(:user) { FactoryBot.create(:user) }
+
     before do
-      visit company_users_path(FactoryBot.create(:user))
+      visit company_users_path(user.company)
     end
 
     it_behaves_like 'ログイン画面にリダイレクト'
