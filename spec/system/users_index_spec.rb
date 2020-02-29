@@ -24,34 +24,22 @@ describe 'フロント画面：アカウント一覧', type: :system do
       let(:login_user) { FactoryBot.create(:user, :not_grader) }
 
       it_behaves_like '一覧表示'
-
-      it '新規作成ボタンが存在しないこと' do
-        expect(page).not_to have_link '新規作成'
-      end
-
-      it '編集ボタンが存在しないこと' do
-        expect(page).not_to have_link '編集'
-      end
-
-      it '削除ボタンが存在しないこと' do
-        expect(page).not_to have_link '削除'
-      end
+      it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_new'
+      it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_edit'
+      it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_destroy'
     end
 
     context '権限が grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :grader) }
 
       it_behaves_like '一覧表示'
+      it_behaves_like 'ボタンエクスペクテーション：be_able_to_new'
 
-      it '新規作成ボタンが存在すること' do
-        expect(page).to have_link '新規作成'
-      end
-
-      it '編集ボタンがアカウントの数だけあること' do
+      it '編集ボタンがログインアカウントと同じ企業アカウントの数だけあること' do
         expect(page).to have_content('編集', count: User.same_as_current_user_company(login_user).count)
       end
 
-      it '削除ボタンがアカウントの数だけあること' do
+      it '削除ボタンがログインアカウントと同じ企業アカウントの数だけあること' do
         expect(page).to have_content('削除', count: User.same_as_current_user_company(login_user).count)
       end
     end

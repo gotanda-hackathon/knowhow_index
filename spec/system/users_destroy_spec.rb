@@ -14,9 +14,7 @@ describe 'フロント画面：アカウント削除', type: :system do
     context '権限が not_grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :not_grader) }
 
-      it '削除ボタンが存在しないこと' do
-        expect(page).not_to have_link '削除'
-      end
+      it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_destroy'
     end
 
     context '権限が grader のとき' do
