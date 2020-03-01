@@ -31,19 +31,28 @@ FactoryBot.define do
     grader { [true, false].sample }
     administrator { [true, false].sample }
 
+    trait :normal do
+      grader { false }
+      administrator { false }
+    end
+
     trait :not_grader do
       grader { false }
+      administrator { false }
     end
 
     trait :grader do
       grader { true }
+      administrator { false }
     end
 
     trait :not_administrator do
+      grader { false }
       administrator { false }
     end
 
     trait :administrator do
+      grader { false }
       administrator { true }
     end
   end

@@ -21,6 +21,7 @@ ja:
         administrator: 管理者権限
         grader: 採点者権限
         company_id: 企業名
+        user_id: アカウント名
   activemodel:
     attributes:
       default: &default

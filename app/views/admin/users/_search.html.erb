@@ -8,14 +8,14 @@
             <h5 class="card-title"><%= t('views.user.index') %></h5>
           </div>
         </div>
-        <h5 id="users_count"><%= users.total_count if users %>件</h5>
+        <h5 id="users_count"><%= users.total_count if users %> 件</h5>
         <%= form_with scope: :search_form, url: admin_users_path, method: :get, data: { turbolinks: false }, local: true do |f| %>
           <div class="row">
-            <div class="input-field col s4">
+            <div class="user_ids input-field col s4">
               <%= f.collection_select :user_ids, User.all, :id, :name, { include_blank: true }, id: 'names', multiple: true %>
               <%= f.label User.human_attribute_name(:user_id), for: :names %>
             </div>
-            <div class="input-field col s4">
+            <div class="company_ids input-field col s4">
               <%= f.collection_select :company_ids, Company.all.order(:id), :id, :name, { include_blank: true }, id: 'divisions', multiple: true %>
               <%= f.label User.human_attribute_name(:company_id), for: :companies %>
             </div>
@@ -25,11 +25,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s4">
+            <div class="grader_flag input-field col s4">
               <%= f.select :grader, [['あり', true], ['なし', false]], { include_blank: true }, id: 'grader' %>
               <%= f.label User.human_attribute_name(:grader), for: :grader %>
             </div>
-            <div class="input-field col s4">
+            <div class="administrator_flag input-field col s4">
               <%= f.select :administrator, [['あり', true], ['なし', false]], { include_blank: true }, id: 'administrator' %>
               <%= f.label User.human_attribute_name(:administrator), for: :administrator %>
             </div>
