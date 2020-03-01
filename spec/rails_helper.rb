@@ -41,6 +41,7 @@ SimpleCov.start do
   add_group 'Controllers', 'app/controllers'
   add_group 'Models', 'app/models'
   add_group 'Decorators', 'app/decorators'
+  add_group 'Forms', 'app/forms'
   add_filter '/vendor/'
   add_filter '/spec/'
 end

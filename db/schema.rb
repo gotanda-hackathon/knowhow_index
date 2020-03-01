@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_233815) do
+ActiveRecord::Schema.define(version: 2020_03_01_073732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2020_02_23_233815) do
     t.string "name", comment: "企業名"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sql_conditions", comment: "検索条件テーブル", force: :cascade do |t|
+    t.string "code", null: false, comment: "検索対象フックコード"
+    t.text "condition", comment: "検索条件"
+    t.bigint "user_id", null: false, comment: "アカウントID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sql_conditions_on_user_id"
   end
 
   create_table "users", comment: "ユーザーテーブル", force: :cascade do |t|
@@ -33,5 +42,6 @@ ActiveRecord::Schema.define(version: 2020_02_23_233815) do
     t.index ["company_id"], name: "index_users_on_company_id"
   end
 
+  add_foreign_key "sql_conditions", "users"
   add_foreign_key "users", "companies"
 end

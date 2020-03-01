@@ -28,6 +28,7 @@ class User < ApplicationRecord
   }
 
   belongs_to :company
+  has_many :sql_conditions, dependent: :destroy
 
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 255 }
@@ -35,4 +36,16 @@ class User < ApplicationRecord
   validates :company_id, presence: true
 
   has_secure_password
+
+  def get_search_condition(code:, params:)
+    sql_condition = sql_conditions.find_or_initialize_by(code: code)
+    sql_condition.condition = YAML.dump(params.with_indifferent_access) unless params.empty?
+    sql_condition.save!
+
+    if sql_condition.condition
+      Psych.safe_load(sql_condition.condition, [ActiveSupport::HashWithIndifferentAccess])
+    else
+      {}
+    end
+  end
 end

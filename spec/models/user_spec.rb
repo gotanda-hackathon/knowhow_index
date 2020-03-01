@@ -25,5 +25,64 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { FactoryBot.create(:user) }
+
+  describe '#get_search_condition' do
+    context 'paramsが空ハッシュのとき' do
+      context 'current_userがまだ検索を行っていないとき' do
+        it '空のハッシュを返すこと' do
+          condition = user.get_search_condition(code: 'user', params: {})
+          expect(condition).to eq({})
+        end
+      end
+
+      context 'current_userが既に検索を行っているとき' do
+        before do
+          user.get_search_condition(code: 'user', params: { user_ids: ['1'] })
+        end
+
+        it '直前の検索条件を返すこと' do
+          condition = user.get_search_condition(code: 'user', params: {})
+          expect(condition[:user_ids]).to eq ['1']
+        end
+      end
+    end
+
+    context 'paramsが空ハッシュではないとき' do
+      context 'current_userがまだ検索を行っていないとき' do
+        it '検索条件が作られること' do
+          expect do
+            user.get_search_condition(code: 'user', params: { user_ids: ['1'] })
+          end.to change(user.sql_conditions, :count).by(1)
+        end
+
+        it 'paramsと同じ値を返すこと' do
+          condition = user.get_search_condition(code: 'user', params: { user_ids: ['1'] })
+          expect(condition[:user_ids]).to eq ['1']
+        end
+      end
+
+      context 'current_userが既に検索を行っているとき' do
+        before do
+          user.get_search_condition(code: 'user', params: { user_ids: ['1'] })
+        end
+
+        it 'paramsと同じ値を返すこと' do
+          condition = user.get_search_condition(code: 'user', params: { user_ids: ['2'] })
+          expect(condition[:user_ids]).to eq ['2']
+        end
+
+        it '既に行っていた検索条件を返さないこと' do
+          condition = user.get_search_condition(code: 'user', params: { user_ids: ['2'] })
+          expect(condition[:user_ids]).not_to eq ['1']
+        end
+
+        it '検索条件が増えないこと' do
+          expect do
+            user.get_search_condition(code: 'user', params: { user_ids: ['1'] })
+          end.not_to change(user.sql_conditions, :count)
+        end
+      end
+    end
+  end
 end

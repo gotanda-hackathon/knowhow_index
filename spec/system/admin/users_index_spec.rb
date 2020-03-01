@@ -45,10 +45,12 @@ describe '管理画面：アカウント一覧', type: :system do
   end
 
   def expect_outline_of(user)
-    expect(page).to have_content user.name
-    expect(page).to have_content user.email
-    expect(page).to have_content user.company.name
-    expect(page).to have_content(user.grader? ? 'あり' : 'なし')
-    expect(page).to have_content(user.administrator? ? 'あり' : 'なし')
+    within "#user_#{user.id}" do
+      expect(page).to have_content user.name
+      expect(page).to have_content user.email
+      expect(page).to have_content user.company.name
+      expect(page).to have_content(user.grader? ? 'あり' : 'なし')
+      expect(page).to have_content(user.administrator? ? 'あり' : 'なし')
+    end
   end
 end
