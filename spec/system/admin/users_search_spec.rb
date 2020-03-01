@@ -9,7 +9,6 @@ describe '管理画面：アカウント検索', type: :system do
     before do
       sign_in_as(login_user)
       visit admin_users_path
-      page.find('h5', text: 'アカウント一覧', match: :first)
     end
 
     context '権限が not_administrator のとき' do
@@ -20,6 +19,10 @@ describe '管理画面：アカウント検索', type: :system do
 
     context '権限が administrator のとき' do
       let(:login_user) { FactoryBot.create(:user, :administrator) }
+
+      before do
+        page.find('h5', text: 'アカウント一覧', match: :first)
+      end
 
       context 'ユーザーの氏名を1つだけ指定するとき' do
         before do
@@ -231,6 +234,7 @@ describe '管理画面：アカウント検索', type: :system do
 
   def expect_outline_of(user)
     aggregate_failures do
+      page.find('h5', text: 'アカウント一覧', match: :first)
       within "#user_#{user.id}" do
         expect(page).to have_content user.name
         expect(page).to have_content user.email
