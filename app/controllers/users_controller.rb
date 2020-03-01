@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
   before_action :not_accessible_different_company_user_data, only: %i[edit update destroy]
+  before_action :not_grader, only: %i[new edit update destroy]
 
   def index
     @users = User.same_as_current_user_company(current_user).order(:id).page(params[:page]).per(Settings.pagination.default).decorate
@@ -51,5 +52,9 @@ class UsersController < ApplicationController
 
   def not_accessible_different_company_user_data
     redirect_to root_url, flash: { red: t('views.flash.non_administrator') } if current_user.company != @user.company
+  end
+
+  def not_grader
+    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } unless current_user.grader?
   end
 end
