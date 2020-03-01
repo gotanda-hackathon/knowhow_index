@@ -4,7 +4,9 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: %i[edit update destroy]
 
   def index
-    @users = User.all.order(:id).includes(:company).page(params[:page]).per(Settings.pagination.default).decorate
+    condition = current_user.get_search_condition(code: 'admin/user', params: user_search_params.to_unsafe_h)
+    @search_form = Admin::UserSearchForm.new(condition)
+    @users = @search_form.search.page(params[:page]).per(Settings.pagination.default).decorate
   end
 
   def new
@@ -46,5 +48,9 @@ class Admin::UsersController < Admin::BaseController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :grader, :administrator, :company_id)
+  end
+
+  def user_search_params
+    params.fetch(:search_form, {}).permit(:email, :grader, :administrator, company_ids: [], user_ids: [])
   end
 end
