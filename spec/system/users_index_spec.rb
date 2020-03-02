@@ -35,11 +35,11 @@ describe 'フロント画面：アカウント一覧', type: :system do
       it_behaves_like '一覧表示'
       it_behaves_like 'ボタンエクスペクテーション：be_able_to_new'
 
-      it '編集ボタンがログインアカウントと同じ企業に紐づくアカウントの数だけあること' do
+      it '編集ボタンがログインアカウントと同じ企業に紐づくUserの数だけあること' do
         expect(page).to have_content('編集', count: User.same_as_current_user_company(login_user).count)
       end
 
-      it '削除ボタンがログインアカウントと同じ企業に紐づくアカウントの数だけあること' do
+      it '削除ボタンがログインアカウントと同じ企業に紐づくUserの数だけあること' do
         expect(page).to have_content('削除', count: User.same_as_current_user_company(login_user).count)
       end
     end
@@ -56,13 +56,14 @@ describe 'フロント画面：アカウント一覧', type: :system do
   end
 
   def expect_outline_of(user)
-    expect(page).to have_content user.name
-    expect(page).to have_content user.email
-    expect(page).to have_content(user.grader? ? 'あり' : 'なし')
+    within "#user_#{user.id}" do
+      expect(page).to have_content user.name
+      expect(page).to have_content user.email
+      expect(page).to have_content(user.grader? ? 'あり' : 'なし')
+    end
   end
 
   def expect_noy_outline_of(user)
-    expect(page).not_to have_content user.name
-    expect(page).not_to have_content user.email
+    expect(page).not_to have_css "#user_#{user.id}"
   end
 end

@@ -1,5 +1,5 @@
 <% users.each.with_index(1) do |user, i| %>
-  <tr>
+  <tr id="user_<%= user.id %>">
     <td><%= i %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>

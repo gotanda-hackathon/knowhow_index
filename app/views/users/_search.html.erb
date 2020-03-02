@@ -1,0 +1,43 @@
+
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="d-flex align-items-center">
+          <div>
+            <h5 class="card-title"><%= t('views.user.index') %></h5>
+          </div>
+        </div>
+        <h5 id="users_count"><%= users.total_count if users %> 件</h5>
+        <%= form_with scope: :search_form, url: company_users_path(current_user.company), method: :get, data: { turbolinks: false }, local: true do |f| %>
+          <div class="row">
+            <div class="user_ids input-field col s4">
+              <%= f.collection_select :user_ids, User.same_as_current_user_company(current_user), :id, :name, { include_blank: true }, id: 'names', multiple: true %>
+              <%= f.label User.human_attribute_name(:user_id), for: :names %>
+            </div>
+            <div class="input-field col s4">
+              <%= f.text_field :email, id: 'email' %>
+              <%= f.label User.human_attribute_name(:email), for: :email %>
+            </div>
+            <div class="grader_flag input-field col s4">
+              <%= f.select :grader, [['あり', true], ['なし', false]], { include_blank: true }, id: 'grader' %>
+              <%= f.label User.human_attribute_name(:grader), for: :grader %>
+            </div>
+          </div>
+          <div class="right-align">
+            <%= button_tag type: 'submit', class: "btn orange" do %>
+              <span><%= t('views.default.search') %></span>
+              <i class="material-icons right">search</i>
+            <% end %>
+            <% if current_user.grader? %>
+              <%= link_to new_company_user_path(current_user.company), data: { turbolinks: false }, class: "btn blue" do %>
+                <span><%= t('views.default.new') %></span>
+                <i class="material-icons right">add</i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

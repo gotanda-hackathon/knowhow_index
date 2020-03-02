@@ -100,29 +100,6 @@ describe '管理画面：アカウント検索', type: :system do
         end
       end
 
-      context '採点者フラグ「あり」を指定するとき' do
-        let!(:grader) { FactoryBot.create(:user, :grader) }
-
-        before do
-          find('div.grader_flag div.select-wrapper input', text: '').click
-          find('div.grader_flag  div.select-wrapper li span', text: 'あり').click
-          click_on '検索'
-        end
-
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
-          expect_outline_of(grader)
-        end
-
-        it '検索条件にヒットしていないアカウントの情報が表示されていないこと' do
-          expect_not_outline_of(login_user)
-          expect_not_outline_of(user)
-        end
-
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
-          expect(page.find('#users_count')).to have_content '1 件'
-        end
-      end
-
       context '存在するメールアドレスで検索するとき' do
         before do
           fill_in 'メールアドレス', with: user.email
@@ -150,6 +127,29 @@ describe '管理画面：アカウント検索', type: :system do
 
         it 'アカウントが1件も表示されないこと' do
           expect(page.find('#users_count')).to have_content '0 件'
+        end
+      end
+
+      context '採点者フラグ「あり」を指定するとき' do
+        let!(:grader) { FactoryBot.create(:user, :grader) }
+
+        before do
+          find('div.grader_flag div.select-wrapper input', text: '').click
+          find('div.grader_flag  div.select-wrapper li span', text: 'あり').click
+          click_on '検索'
+        end
+
+        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+          expect_outline_of(grader)
+        end
+
+        it '検索条件にヒットしていないアカウントの情報が表示されていないこと' do
+          expect_not_outline_of(login_user)
+          expect_not_outline_of(user)
+        end
+
+        it '検索条件にヒットしたアカウントの数が表示されていること' do
+          expect(page.find('#users_count')).to have_content '1 件'
         end
       end
 
