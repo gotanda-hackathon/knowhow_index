@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   before_action :not_grader, only: %i[new edit update destroy]
 
   def index
-    @users = User.same_as_current_user_company(current_user).order(:id).page(params[:page]).per(Settings.pagination.default).decorate
+    condition = current_user.get_search_condition(code: 'user', params: user_search_params.to_unsafe_h)
+    @search_form = UserSearchForm.new(condition)
+    @users = @search_form.search(current_user).page(params[:page]).per(Settings.pagination.default).decorate
   end
 
   def new
@@ -48,6 +50,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :grader, :company_id)
+  end
+
+  def user_search_params
+    params.fetch(:search_form, {}).permit(:email, :grader, user_ids: [])
   end
 
   def not_accessible_different_company_user_data
