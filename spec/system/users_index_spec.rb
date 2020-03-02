@@ -56,13 +56,14 @@ describe 'フロント画面：アカウント一覧', type: :system do
   end
 
   def expect_outline_of(user)
-    expect(page).to have_content user.name
-    expect(page).to have_content user.email
-    expect(page).to have_content(user.grader? ? 'あり' : 'なし')
+    within "#user_#{user.id}" do
+      expect(page).to have_content user.name
+      expect(page).to have_content user.email
+      expect(page).to have_content(user.grader? ? 'あり' : 'なし')
+    end
   end
 
   def expect_noy_outline_of(user)
-    expect(page).not_to have_content user.name
-    expect(page).not_to have_content user.email
+    expect(page).not_to have_css "#user_#{user.id}"
   end
 end
