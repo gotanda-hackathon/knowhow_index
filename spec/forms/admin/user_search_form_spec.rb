@@ -120,7 +120,7 @@ RSpec.describe Admin::UserSearchForm, type: :model do
       context '存在するemailで検索するとき' do
         let(:search_condition) { { email: 'exist@test.com' } }
 
-        it 'ヒットするメールアドレスだけ返ること' do
+        it 'ヒットするメールアドレスのUserだけ返ること' do
           aggregate_failures do
             expect(searched_users.count).to eq 1
             expect(searched_users[0].id).to eq user.id

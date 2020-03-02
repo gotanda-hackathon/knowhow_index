@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'フロント画面：ログインアカウントと同じ企業に紐づくアカウントの編集', type: :system do
+describe 'フロント画面：ログインアカウントと同じ企業に紐づくUserの編集', type: :system do
   context 'ログインしているとき' do
     let!(:user) { FactoryBot.create(:user, company: login_user.company) }
 
