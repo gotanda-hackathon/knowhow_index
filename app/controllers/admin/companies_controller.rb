@@ -4,7 +4,9 @@ class Admin::CompaniesController < Admin::BaseController
   before_action :set_company, only: %i[edit update destroy]
 
   def index
-    @companies = Company.all.order(:id).page(params[:page]).per(Settings.pagination.default).decorate
+    condition = current_user.get_search_condition(code: 'admin/company', params: user_search_params.to_unsafe_h)
+    @search_form = Admin::CompanySearchForm.new(condition)
+    @companies = @search_form.search.page(params[:page]).per(Settings.pagination.default).decorate
   end
 
   def new
@@ -46,5 +48,9 @@ class Admin::CompaniesController < Admin::BaseController
 
   def company_params
     params.require(:company).permit(:name)
+  end
+
+  def user_search_params
+    params.fetch(:search_form, {}).permit(:name)
   end
 end
