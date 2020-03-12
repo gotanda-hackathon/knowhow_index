@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :ad_medium do
-    name { 'MyString' }
-    company { nil }
+    sequence(:name) { |n| "テスト媒体名#{n}" }
+    association :company
   end
 end
