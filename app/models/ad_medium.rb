@@ -20,4 +20,6 @@
 #
 class AdMedium < ApplicationRecord
   belongs_to :company
+
+  validates :name, presence: true, length: { maximum: 255 }
 end
