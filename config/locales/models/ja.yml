@@ -16,6 +16,9 @@ ja:
       company:
         <<: *default
         name: 企業名
+      ad_medium:
+        <<: *default
+        name: 広告媒体名
       user:
         <<: *default
         administrator: 管理者権限
