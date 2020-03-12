@@ -1,2 +1,20 @@
-<h1>AdMedia#index</h1>
-<p>Find me in app/views/ad_media/index.html.erb</p>
+<%= render partial: 'search', locals: { ad_media: @ad_media } %>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="table-responsive m-b-20">
+          <table class="">
+            <thead>
+              <%= render 'thead' %>
+            </thead>
+            <tbody>
+              <%= render partial: 'tbody', locals: { ad_media: @ad_media } %>
+            </tbody>
+          </table>
+        </div>
+        <%= paginate @ad_media %>
+      </div>
+    </div>
+  </div>
+</div>
