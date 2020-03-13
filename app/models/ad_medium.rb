@@ -19,9 +19,7 @@
 #  fk_rails_...  (company_id => companies.id)
 #
 class AdMedium < ApplicationRecord
-  scope :same_as_current_user_company, lambda { |user|
-    all.where(company: user.company)
-  }
+  include CompanyMatchable
 
   belongs_to :company
 
