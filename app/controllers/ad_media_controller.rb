@@ -37,6 +37,10 @@ class AdMediaController < ApplicationController
     end
   end
 
+  def destroy
+    @ad_medium.destroy!
+    redirect_to company_ad_media_url(current_user.company), flash: { green: t('views.flash.destroy_success') }
+  end
 
   private
 
