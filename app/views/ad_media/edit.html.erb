@@ -1,2 +1,18 @@
-<h1>AdMedia#edit</h1>
-<p>Find me in app/views/ad_media/edit.html.erb</p>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="d-flex align-items-center">
+          <div>
+            <h5 class="card-title"><%= t("views.#{controller_name.singularize}.#{controller.action_name}") %></h5>
+          </div>
+        </div>
+        <div class="table-responsive m-b-20">
+          <%= form_with model: @ad_medium, url: company_ad_medium_path(current_user.company, @ad_medium), local: true do |f| %>
+            <%= render partial: 'form', locals: { f: f, ad_medium: @ad_medium } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

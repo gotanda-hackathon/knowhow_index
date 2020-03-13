@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AdMediaController < ApplicationController
+  before_action :set_ad_medium, only: %i[edit update destroy]
+  before_action :not_accessible_different_company_ad_medium_data, only: %i[edit update destroy]
   before_action :not_grader, only: %i[new edit update destroy]
 
   def index
@@ -26,7 +28,21 @@ class AdMediaController < ApplicationController
 
   def edit; end
 
+  def update
+    if @ad_medium.update(ad_medium_params)
+      redirect_to edit_company_ad_medium_url(current_user.company, @ad_medium), flash: { green: t('views.flash.update_success') }
+    else
+      flash.now[:red] = t('views.flash.update_danger')
+      render :edit
+    end
+  end
+
+
   private
+
+  def set_ad_medium
+    @ad_medium = AdMedium.find(params[:id])
+  end
 
   def ad_medium_params
     params.require(:ad_medium).permit(:name, :company_id)
@@ -34,6 +50,10 @@ class AdMediaController < ApplicationController
 
   def search_params
     params.fetch(:search_form, {}).permit(:name)
+  end
+
+  def not_accessible_different_company_ad_medium_data
+    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } if current_user.company != @ad_medium.company
   end
 
   def not_grader
