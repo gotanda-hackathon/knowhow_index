@@ -12,7 +12,7 @@
         <%= form_with scope: :search_form, url: company_users_path(current_user.company), method: :get, local: true do |f| %>
           <div class="row">
             <div class="user_ids input-field col s4">
-              <%= f.collection_select :user_ids, User.same_as_current_user_company(current_user), :id, :name, { include_blank: true }, multiple: true %>
+              <%= f.collection_select :user_ids, User.same_company_with(current_user), :id, :name, { include_blank: true }, multiple: true %>
               <%= f.label User.human_attribute_name(:user_id) %>
             </div>
             <div class="input-field col s4">

@@ -36,11 +36,11 @@ describe 'フロント画面：アカウント一覧', type: :system do
       it_behaves_like 'ボタンエクスペクテーション：be_able_to_new'
 
       it '編集ボタンがログインアカウントと同じ企業に紐づくUserの数だけあること' do
-        expect(page).to have_content('編集', count: User.same_as_current_user_company(login_user).count)
+        expect(page).to have_content('編集', count: User.same_company_with(login_user).count)
       end
 
       it '削除ボタンがログインアカウントと同じ企業に紐づくUserの数だけあること' do
-        expect(page).to have_content('削除', count: User.same_as_current_user_company(login_user).count)
+        expect(page).to have_content('削除', count: User.same_company_with(login_user).count)
       end
     end
   end

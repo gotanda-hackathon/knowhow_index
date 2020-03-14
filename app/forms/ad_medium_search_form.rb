@@ -6,7 +6,7 @@ class AdMediumSearchForm
   attr_accessor :name
 
   def search(current_user)
-    records = AdMedium.same_as_current_user_company(current_user)
+    records = AdMedium.same_company_with(current_user)
     records = scoped_by_name(records)
     records.order(:id)
   end

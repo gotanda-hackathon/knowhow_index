@@ -4,7 +4,7 @@ module CompanyMatchable
   extend ActiveSupport::Concern
 
   included do
-    scope :same_as_current_user_company, lambda { |user|
+    scope :same_company_with, lambda { |user|
       all.where(company: user.company)
     }
   end
