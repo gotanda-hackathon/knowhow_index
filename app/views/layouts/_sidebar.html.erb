@@ -10,13 +10,13 @@
       <ul class="collapsible">
         <li class="small-cap"><span class="hide-menu">各種機能</span></li>
         <li class="<%= user_active %>">
-          <%= link_to company_users_path(current_user.company), data: { turbolinks: false }, class: 'collapsible-header' do %>
+          <%= link_to company_users_path(current_user.company), class: 'collapsible-header' do %>
             <i class="material-icons">people</i>
             <span class="hide-menu"><%= t('views.user.index') %></span>
           <% end %>
         </li>
         <li class="<%= ad_medium_active %>">
-          <%= link_to company_ad_media_path(current_user.company), data: { turbolinks: false }, class: 'collapsible-header' do %>
+          <%= link_to company_ad_media_path(current_user.company), class: 'collapsible-header' do %>
             <i class="material-icons">chrome_reader_mode</i>
             <span class="hide-menu"><%= t('views.ad_medium.index') %></span>
           <% end %>
@@ -24,20 +24,20 @@
         <% if current_user.administrator? %>
           <li class="small-cap"><span class="hide-menu"> 管理者機能</span></li>
           <li class="<%= admin_company_active %>">
-            <%= link_to admin_companies_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
+            <%= link_to admin_companies_path, class: 'collapsible-header' do %>
               <i class="material-icons">location_city</i>
               <span class="hide-menu"><%= t('views.company.index') %></span>
             <% end %>
           </li>
           <li class="<%= admin_user_active %>">
-            <%= link_to admin_users_path, data: { turbolinks: false }, class: 'collapsible-header' do %>
+            <%= link_to admin_users_path, class: 'collapsible-header' do %>
               <i class="material-icons">supervised_user_circle</i>
               <span class="hide-menu"><%= t('views.user.index') %></span>
             <% end %>
           </li>
           <li class="small-cap"><span class="hide-menu">その他</span></li>
           <li>
-            <%= link_to logout_path, method: :delete, data: { turbolinks: false }, class: 'collapsible-header' do %>
+            <%= link_to logout_path, method: :delete, class: 'collapsible-header' do %>
               <i class="material-icons">directions</i>
               <span class="hide-menu"><%= t('views.session.logout') %></span>
             <% end %>

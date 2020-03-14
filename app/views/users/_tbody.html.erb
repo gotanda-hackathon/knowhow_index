@@ -6,7 +6,7 @@
     <td><%= user.show_grader %></td>
     <% if current_user.grader? %>
       <td id="edit_btn_<%= user.id %>">
-        <%= link_to edit_company_user_path(current_user.company, user), data: { turbolinks: false }, class: "btn green" do %>
+        <%= link_to edit_company_user_path(current_user.company, user), class: "btn green" do %>
           <%= t('views.default.edit') %>
           <i class="material-icons right">edit</i>
         <% end %>

@@ -4,7 +4,7 @@
     <td><%= company.name %></td>
     <td><%= company.show_created_at %></td>
     <td id="edit_btn_<%= company.id %>">
-      <%= link_to edit_admin_company_path(company), data: { turbolinks: false }, class: "btn green" do %>
+      <%= link_to edit_admin_company_path(company), class: "btn green" do %>
         <%= t('views.default.edit') %>
         <i class="material-icons right">edit</i>
       <% end %>

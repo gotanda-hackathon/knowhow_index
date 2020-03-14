@@ -5,9 +5,14 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <!-- TODO: turbolinks がデザインテンプレートのJSと相性が良くないので切る
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'%>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_pack_tag 'application', media: 'all' %>
+  <%= javascript_pack_tag 'application' %>
 </head>
 
 <% if logged_in? %>
@@ -34,7 +39,7 @@
         <!-- ============================================================== -->
         <!-- Logo you can find that scss in header.scss -->
         <!-- ============================================================== -->
-        <%= link_to root_path, data: { turbolinks: false }, class: 'brand-logo' do %>
+        <%= link_to root_path, class: 'brand-logo' do %>
           <span class="icon">
               <img class="light-logo" src="/assets//logo-light-icon.png">
               <img class="dark-logo" src="/assets//logo-icon.png">

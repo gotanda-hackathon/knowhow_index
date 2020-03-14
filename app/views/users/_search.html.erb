@@ -9,7 +9,7 @@
           </div>
         </div>
         <h5 id="users_count"><%= users.total_count if users %> 件</h5>
-        <%= form_with scope: :search_form, url: company_users_path(current_user.company), method: :get, data: { turbolinks: false }, local: true do |f| %>
+        <%= form_with scope: :search_form, url: company_users_path(current_user.company), method: :get, local: true do |f| %>
           <div class="row">
             <div class="user_ids input-field col s4">
               <%= f.collection_select :user_ids, User.same_as_current_user_company(current_user), :id, :name, { include_blank: true }, id: 'names', multiple: true %>
@@ -30,7 +30,7 @@
               <i class="material-icons right">search</i>
             <% end %>
             <% if current_user.grader? %>
-              <%= link_to new_company_user_path(current_user.company), data: { turbolinks: false }, class: "btn blue" do %>
+              <%= link_to new_company_user_path(current_user.company), class: "btn blue" do %>
                 <span><%= t('views.default.new') %></span>
                 <i class="material-icons right">add</i>
               <% end %>
