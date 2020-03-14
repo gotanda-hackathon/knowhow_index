@@ -29,4 +29,28 @@ class AdMedium < ApplicationRecord
   def name_must_not_be_duplicated_within_same_company
     errors.add :name, 'はすでに存在しています' if AdMedium.where(company: company).pluck(:name).any? { |n| n.include?(name) }
   end
+
+  class << self
+    def csv_attributes
+      %w[name]
+    end
+
+    def csv_import!(file, user)
+      ad_media = []
+      CSV.foreach(file.path, encoding: Encoding::SJIS, headers: true) do |row|
+        ad_medium = user.company.ad_media.new
+        ad_medium.attributes = row.to_hash.slice(*csv_attributes)
+        ad_media << ad_medium
+      end
+      begin
+        import!(ad_media, validate: true, validate_uniqueness: true)
+      rescue ActiveRecord::RecordInvalid => e
+        logger.error '[LOG]CSVアップデートのバリデーションエラー'
+        logger.error "[LOG]エラークラス：#{e.class}"
+        logger.error "[LOG]エラーメッセージ：#{e.message}"
+        ad_media = []
+        retry
+      end
+    end
+  end
 end
