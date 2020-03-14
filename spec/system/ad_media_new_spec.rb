@@ -12,7 +12,7 @@ describe 'フロント画面：広告媒体作成', type: :system do
     context '権限が not_grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :not_grader) }
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '権限が弱いこと'
     end
 
     context '権限が grader のとき' do

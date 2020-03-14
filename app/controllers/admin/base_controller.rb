@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Admin::BaseController < ApplicationController
-  before_action :not_accessible_by_normal_user
+  before_action :not_accessible_except_to_administrator
 
   private
 
-  def not_accessible_by_normal_user
-    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } unless current_user.administrator?
+  def not_accessible_except_to_administrator
+    redirect_to root_url, flash: { red: t('views.flash.not_have_authority') } unless current_user.administrator?
   end
 end

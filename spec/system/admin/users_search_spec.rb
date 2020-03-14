@@ -14,7 +14,7 @@ describe '管理画面：アカウント検索', type: :system do
     context '権限が not_administrator のとき' do
       let(:login_user) { FactoryBot.create(:user, :not_administrator) }
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '権限が弱いこと'
     end
 
     context '権限が administrator のとき' do

@@ -2,8 +2,8 @@
 
 class AdMediaController < ApplicationController
   before_action :set_ad_medium, only: %i[edit update destroy]
-  before_action :not_accessible_different_company_ad_medium_data, only: %i[edit update destroy]
-  before_action :not_grader, only: %i[new edit update destroy]
+  before_action :not_accessible_different_company_data, only: %i[edit update destroy]
+  before_action :not_accessible_except_to_grader, only: %i[new edit update destroy]
 
   def index
     condition = current_user.get_search_condition(code: 'ad_medium', params: search_params.to_unsafe_h)
@@ -56,11 +56,11 @@ class AdMediaController < ApplicationController
     params.fetch(:search_form, {}).permit(:name)
   end
 
-  def not_accessible_different_company_ad_medium_data
-    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } if current_user.company != @ad_medium.company
+  def not_accessible_different_company_data
+    redirect_to root_url, flash: { red: t('views.flash.not_accessible_different_company_data') } if current_user.company != @ad_medium.company
   end
 
-  def not_grader
-    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } unless current_user.grader?
+  def not_accessible_except_to_grader
+    redirect_to root_url, flash: { red: t('views.flash.not_have_authority') } unless current_user.grader?
   end
 end
