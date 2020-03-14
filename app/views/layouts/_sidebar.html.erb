@@ -35,14 +35,14 @@
               <span class="hide-menu"><%= t('views.user.index') %></span>
             <% end %>
           </li>
-          <li class="small-cap"><span class="hide-menu">その他</span></li>
-          <li>
-            <%= link_to logout_path, method: :delete, class: 'collapsible-header' do %>
-              <i class="material-icons">directions</i>
-              <span class="hide-menu"><%= t('views.session.logout') %></span>
-            <% end %>
-          </li>
         <% end %>
+        <li class="small-cap"><span class="hide-menu">その他</span></li>
+        <li>
+          <%= link_to logout_path, method: :delete, class: 'collapsible-header' do %>
+            <i class="material-icons">directions</i>
+            <span class="hide-menu"><%= t('views.session.logout') %></span>
+          <% end %>
+        </li>
       </ul>
     </li>
   </ul>
