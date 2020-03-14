@@ -21,9 +21,11 @@
               <span><%= t('views.default.search') %></span>
               <i class="material-icons right">search</i>
             <% end %>
-            <%= link_to new_company_ad_medium_path(current_user.company), data: { turbolinks: false }, class: "btn blue" do %>
-              <span><%= t('views.default.new') %></span>
-              <i class="material-icons right">add</i>
+            <% if current_user.grader? %>
+              <%= link_to new_company_ad_medium_path(current_user.company), data: { turbolinks: false }, class: "btn blue" do %>
+                <span><%= t('views.default.new') %></span>
+                <i class="material-icons right">add</i>
+              <% end %>
             <% end %>
           </div>
         <% end %>
