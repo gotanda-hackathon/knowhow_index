@@ -52,5 +52,16 @@ class AdMedium < ApplicationRecord
         retry
       end
     end
+
+    def generate_csv_by(user)
+      CSV.generate(encoding: Encoding::SJIS, headers: true) do |csv|
+        csv << csv_attributes
+        same_company_with(user).find_each do |ad_medium|
+          csv << csv_attributes.map do |attr|
+            ad_medium.send(attr)
+          end
+        end
+      end
+    end
   end
 end

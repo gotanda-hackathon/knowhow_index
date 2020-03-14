@@ -5,11 +5,17 @@ class AdMediaController < ApplicationController
   before_action :not_accessible_different_company_data, only: %i[edit update destroy]
   before_action :not_accessible_except_to_grader, only: %i[new edit update destroy]
   before_action :require_setting_csv_file, only: %i[csv_import]
+  before_action :set_date_for_csv, only: %i[index]
 
   def index
     condition = current_user.get_search_condition(code: 'ad_medium', params: search_params.to_unsafe_h)
     @search_form = AdMediumSearchForm.new(condition)
-    @ad_media = @search_form.search(current_user).page(params[:page]).per(Settings.pagination.default).decorate
+    @ad_media = @search_form.search(current_user).paginated(params[:page]).decorate
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data AdMedium.generate_csv_by(current_user), filename: "ad_media-#{@date}.csv" }
+    end
   end
 
   def csv_import
@@ -78,5 +84,9 @@ class AdMediaController < ApplicationController
 
   def require_setting_csv_file
     redirect_to company_ad_media_url(current_user.company), flash: { red: t('views.flash.non_csv_file') } unless params[:file].present? && File.extname(params[:file].original_filename) == '.csv'
+  end
+
+  def set_date_for_csv
+    @date = Time.zone.now.strftime('%Y%m%d-%H%M%S')
   end
 end
