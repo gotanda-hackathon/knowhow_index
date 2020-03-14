@@ -46,7 +46,7 @@ RSpec.describe AdMediumSearchForm, type: :model do
       context '存在するnameで検索するとき' do
         let(:search_condition) { { name: 'exist_name' } }
 
-        it 'ログインアカウントと同じ企業に紐づくアカウント内でヒットする媒体名のAdMediumだけ返ること' do
+        it 'ログインアカウントと同じ企業に紐づくAdMediumで一致するnameのものだけ返ること' do
           aggregate_failures do
             expect(searched_ad_media.count).to eq 1
             expect(searched_ad_media[0].id).to eq ad_medium.id

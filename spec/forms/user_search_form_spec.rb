@@ -56,7 +56,7 @@ RSpec.describe UserSearchForm, type: :model do
       let!(:ids1) { same_company_users.select { |u| u.id.odd? }.map(&:id) }
       let!(:ids2) { different_company_users.select { |u| u.id.odd? }.map(&:id) }
 
-      it 'ログインアカウントと同じ企業に紐づくアカウント内で指定したidのUserだけ返ること' do
+      it 'ログインアカウントと同じ企業に紐づくUserで指定したidのものだけ返ること' do
         aggregate_failures do
           expect(searched_users.count).to eq 2
           expect(searched_users[0].id).to eq ids1[0]
@@ -75,7 +75,7 @@ RSpec.describe UserSearchForm, type: :model do
       context '存在するemailで検索するとき' do
         let(:search_condition) { { email: 'exist' } }
 
-        it 'ログインアカウントと同じ企業に紐づくアカウント内でヒットするメールアドレスのUserだけ返ること' do
+        it 'ログインアカウントと同じ企業に紐づくUserで一致するemailのものだけ返ること' do
           aggregate_failures do
             expect(searched_users.count).to eq 1
             expect(searched_users[0].id).to eq user.id
@@ -101,7 +101,7 @@ RSpec.describe UserSearchForm, type: :model do
         FactoryBot.create(:user, :grader)
       end
 
-      it 'ログインアカウントと同じ企業に紐づくアカウント内で指定したフラグのUserだけ返ること' do
+      it 'ログインアカウントと同じ企業に紐づくUserで指定したフラグのものだけ返ること' do
         aggregate_failures do
           expect(searched_users.count).to eq 2
           expect(searched_users[0].id).to eq current_user.id

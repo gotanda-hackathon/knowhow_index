@@ -45,7 +45,7 @@ describe 'フロント画面：ログインアカウントと同じ企業に紐�
         end
       end
 
-      context 'すでに存在する媒体名を入力するとき' do
+      context 'すでに存在するnameを入力するとき' do
         let(:ad_medium2) { FactoryBot.create(:ad_medium, company: login_user.company) }
 
         before do

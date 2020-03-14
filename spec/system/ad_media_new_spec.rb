@@ -35,7 +35,7 @@ describe 'フロント画面：広告媒体作成', type: :system do
         end
       end
 
-      context 'すでに存在する媒体名を入力するとき' do
+      context 'すでに存在するnameを入力するとき' do
         let(:ad_medium) { FactoryBot.create(:ad_medium, company: login_user.company) }
 
         before do

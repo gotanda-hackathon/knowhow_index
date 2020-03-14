@@ -24,21 +24,21 @@ describe '管理画面：企業検索', type: :system do
         page.find('h5', text: '企業一覧', match: :first)
       end
 
-      context '存在する企業名で検索するとき' do
+      context '存在するnameで検索するとき' do
         before do
           fill_in '企業名', with: company.name
           click_on '検索'
         end
 
-        it '検索条件にヒットした企業の情報が表示されていること' do
+        it '検索条件に一致した企業が表示されていること' do
           expect_outline_of(company)
         end
 
-        it '検索条件にヒットしなかった企業の情報が表示されていないこと' do
+        it '検索条件に一致しなかった企業が表示されていないこと' do
           expect_not_outline_of(login_user.company)
         end
 
-        it '検索条件にヒットした企業名の数が表示されていること' do
+        it '検索条件に一致した企業名の数が表示されていること' do
           expect(page.find('#companies_count')).to have_content '1 件'
         end
       end

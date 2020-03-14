@@ -20,7 +20,7 @@ describe '管理画面：企業一覧', type: :system do
     context '権限が administrator のとき' do
       let(:login_user) { FactoryBot.create(:user, :administrator) }
 
-      it '企業の情報が表示されていること' do
+      it '企業が表示されていること' do
         expect_outline_of(companies[0])
         expect_outline_of(companies[1])
       end

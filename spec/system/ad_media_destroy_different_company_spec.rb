@@ -20,7 +20,7 @@ describe 'フロント画面：ログインアカウントと違う企業に紐�
     context '権限が grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :grader) }
 
-      it '違う企業に紐づくUserの削除ボタンが存在しないこと' do
+      it '違う企業に紐づくAdMediumの削除ボタンが存在しないこと' do
         expect(page).not_to have_content "delete_btn_#{ad_medium.id}"
       end
     end
