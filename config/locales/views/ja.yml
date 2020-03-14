@@ -14,7 +14,6 @@ ja:
       export: "CSV出力"
     company:
       index: "企業一覧"
-      show: "企業詳細"
       edit: "企業編集"
       new: "企業作成"
       create: "企業作成"
@@ -27,8 +26,6 @@ ja:
       update: "広告媒体編集"
     user:
       index: "アカウント一覧"
-      mypage: "マイページ"
-      show: "アカウント詳細"
       edit: "アカウント編集"
       new: "アカウント作成"
       create: "アカウント作成"
@@ -49,8 +46,8 @@ ja:
       login_danger: "ユーザー名またはパスワードが違います"
       logout_success: "ログアウトしました"
       non_logged_in_user: "ログインが必要です"
-      incorrect_user: "他のユーザー情報は変更できません"
-      non_administrator: "権限がありません"
+      not_accessible_different_company_data: "別の企業情報は変更できません"
+      not_have_authority: "権限がありません"
       logged_in_user: "ログイン済です"
       create_csv_user: "CSVデータからアカウントを %{count}人 作成しました"
       fail_csv_user: "メールアドレス重複やその他の誤りのために取込は行われませんでした"

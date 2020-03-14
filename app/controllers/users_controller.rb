@@ -2,11 +2,11 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
-  before_action :not_accessible_different_company_user_data, only: %i[edit update destroy]
-  before_action :not_grader, only: %i[new edit update destroy]
+  before_action :not_accessible_different_company_data, only: %i[edit update destroy]
+  before_action :not_accessible_except_to_grader, only: %i[new edit update destroy]
 
   def index
-    condition = current_user.get_search_condition(code: 'user', params: user_search_params.to_unsafe_h)
+    condition = current_user.get_search_condition(code: 'user', params: search_params.to_unsafe_h)
     @search_form = UserSearchForm.new(condition)
     @users = @search_form.search(current_user).page(params[:page]).per(Settings.pagination.default).decorate
   end
@@ -52,15 +52,15 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :grader, :company_id)
   end
 
-  def user_search_params
+  def search_params
     params.fetch(:search_form, {}).permit(:email, :grader, user_ids: [])
   end
 
-  def not_accessible_different_company_user_data
-    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } if current_user.company != @user.company
+  def not_accessible_different_company_data
+    redirect_to root_url, flash: { red: t('views.flash.not_accessible_different_company_data') } if current_user.company != @user.company
   end
 
-  def not_grader
-    redirect_to root_url, flash: { red: t('views.flash.non_administrator') } unless current_user.grader?
+  def not_accessible_except_to_grader
+    redirect_to root_url, flash: { red: t('views.flash.not_have_authority') } unless current_user.grader?
   end
 end

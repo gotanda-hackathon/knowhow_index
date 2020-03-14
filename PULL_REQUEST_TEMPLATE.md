@@ -10,7 +10,7 @@
 ---
 - [ ] `$ bundle exec rubocop` で規約違反がないこと
 - [ ] `$ bin/rspec` でテストグリーンであること
-- [ ] `$ rubycritic app lib` でD以下がないこと
+- [ ] テストカバレッジが 90% 以上であること
 
 導入gem
 ---

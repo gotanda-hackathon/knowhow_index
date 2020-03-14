@@ -37,6 +37,7 @@ if ENV['CIRCLE_ARTIFACTS']
   SimpleCov.coverage_dir(dir)
 end
 
+SimpleCov.minimum_coverage 90
 SimpleCov.start do
   add_group 'Controllers', 'app/controllers'
   add_group 'Models', 'app/models'

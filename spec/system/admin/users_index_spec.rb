@@ -14,13 +14,13 @@ describe '管理画面：アカウント一覧', type: :system do
     context '権限が not_administrator のとき' do
       let(:login_user) { FactoryBot.create(:user, :not_administrator) }
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '権限が弱いこと'
     end
 
     context '権限が administrator のとき' do
       let(:login_user) { FactoryBot.create(:user, :administrator) }
 
-      it 'アカウントの情報が表示されていること' do
+      it 'アカウントが表示されていること' do
         expect_outline_of(users[0])
         expect_outline_of(users[1])
         expect_outline_of(login_user)

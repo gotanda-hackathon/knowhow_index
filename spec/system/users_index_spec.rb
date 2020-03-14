@@ -8,7 +8,7 @@ describe 'フロント画面：アカウント一覧', type: :system do
     let!(:user2) { FactoryBot.create(:user) }
 
     shared_examples '一覧表示' do
-      it 'ログインアカウントと同じ企業アカウントの情報だけが表示されていること' do
+      it 'ログインアカウントと同じ企業に紐づくUser情報だけ表示されていること' do
         expect_outline_of(login_user)
         expect_outline_of(user1)
         expect_noy_outline_of(user2)

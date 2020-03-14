@@ -19,21 +19,21 @@ describe 'フロント画面：広告媒体検索', type: :system do
         page.find('h5', text: '広告媒体一覧', match: :first)
       end
 
-      context '存在する広告媒体で検索するとき' do
+      context '存在するnameで検索するとき' do
         before do
           fill_in '広告媒体名', with: ad_medium1.name
           click_on '検索'
         end
 
-        it '検索条件にヒットした広告媒体の情報が表示されていること' do
+        it '検索条件に一致した広告媒体が表示されていること' do
           expect_not_grader_outline_of(ad_medium1)
         end
 
-        it '検索条件にヒットしなかった広告媒体の情報が表示されていないこと' do
+        it '検索条件に一致しなかった広告媒体が表示されていないこと' do
           expect_not_outline_of(ad_medium2)
         end
 
-        it '検索条件にヒットした広告媒体の数が表示されていること' do
+        it '検索条件に一致した広告媒体の数が表示されていること' do
           expect(page.find('#ad_media_count')).to have_content '1 件'
         end
       end
@@ -57,21 +57,21 @@ describe 'フロント画面：広告媒体検索', type: :system do
         page.find('h5', text: '広告媒体一覧', match: :first)
       end
 
-      context '存在する広告媒体名で検索するとき' do
+      context '存在するnameで検索するとき' do
         before do
           fill_in '広告媒体名', with: ad_medium1.name
           click_on '検索'
         end
 
-        it '検索条件にヒットした広告媒体の情報が表示されていること' do
+        it '検索条件に一致した広告媒体が表示されていること' do
           expect_grader_outline_of(ad_medium1)
         end
 
-        it '検索条件にヒットしなかった広告媒体の情報が表示されていないこと' do
+        it '検索条件に一致しなかった広告媒体が表示されていないこと' do
           expect_not_outline_of(ad_medium2)
         end
 
-        it '検索条件にヒットしたメールアドレスの数が表示されていること' do
+        it '検索条件に一致したメールアドレスの数が表示されていること' do
           expect(page.find('#ad_media_count')).to have_content '1 件'
         end
       end

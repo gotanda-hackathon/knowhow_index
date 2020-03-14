@@ -14,7 +14,7 @@ describe 'フロント画面：ログインアカウントと違う企業に紐�
         visit edit_company_user_path(login_user.company, user)
       end
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '別の企業情報にアクセスすること'
     end
 
     context '権限が grader のとき' do
@@ -25,7 +25,7 @@ describe 'フロント画面：ログインアカウントと違う企業に紐�
         visit edit_company_user_path(login_user.company, user)
       end
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '別の企業情報にアクセスすること'
     end
   end
 

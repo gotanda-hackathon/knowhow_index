@@ -45,7 +45,7 @@ RSpec.describe Admin::CompanySearchForm, type: :model do
       context '存在するnameで検索するとき' do
         let(:search_condition) { { name: 'exist_name' } }
 
-        it 'ヒットするメールアドレスのcompanyだけ返ること' do
+        it '一致するnameのものだけ返ること' do
           aggregate_failures do
             expect(searched_companies.count).to eq 1
             expect(searched_companies[0].id).to eq company.id

@@ -14,7 +14,7 @@ describe 'フロント画面：ログインアカウントと同じ企業に紐�
         visit edit_company_ad_medium_path(login_user.company, ad_medium1)
       end
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '権限が弱いこと'
     end
 
     context '権限が grader のとき' do
@@ -45,7 +45,7 @@ describe 'フロント画面：ログインアカウントと同じ企業に紐�
         end
       end
 
-      context 'すでに存在する媒体名を入力するとき' do
+      context 'すでに存在するnameを入力するとき' do
         let(:ad_medium2) { FactoryBot.create(:ad_medium, company: login_user.company) }
 
         before do

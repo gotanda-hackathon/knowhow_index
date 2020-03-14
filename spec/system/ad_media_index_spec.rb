@@ -8,7 +8,7 @@ describe 'フロント画面：広告媒体一覧', type: :system do
     let!(:ad_medium2) { FactoryBot.create(:ad_medium) }
 
     shared_examples '一覧表示' do
-      it 'ログインアカウントと同じ企業に紐づくAdMediumだけが表示されていること' do
+      it 'ログインアカウントと同じ企業に紐づくAdMediumだけ表示されていること' do
         expect_outline_of(ad_medium1)
         expect_noy_outline_of(ad_medium2)
       end

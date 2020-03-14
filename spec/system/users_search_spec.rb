@@ -26,16 +26,16 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_not_grader_outline_of(user1)
         end
 
-        it '検索条件にヒットしなかったアカウントの情報が表示されていないこと' do
+        it '検索条件に一致しなかったアカウントが表示されていないこと' do
           expect_not_outline_of(login_user)
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '1 件'
         end
       end
@@ -48,36 +48,36 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_not_grader_outline_of(user1)
           expect_not_grader_outline_of(login_user)
         end
 
-        it '検索条件にヒットしなかったアカウントの情報が表示されていないこと' do
+        it '検索条件に一致しなかったアカウントが表示されていないこと' do
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '2 件'
         end
       end
 
-      context '存在するメールアドレスで検索するとき' do
+      context '存在するemailで検索するとき' do
         before do
           fill_in 'メールアドレス', with: user1.email
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_not_grader_outline_of(user1)
         end
 
-        it '検索条件にヒットしなかったアカウントの情報が表示されていないこと' do
+        it '検索条件に一致しなかったアカウントが表示されていないこと' do
           expect_not_outline_of(login_user)
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたメールアドレスの数が表示されていること' do
+        it '検索条件に一致したメールアドレスの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '1 件'
         end
       end
@@ -103,18 +103,18 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_not_grader_outline_of(grader1)
         end
 
-        it '検索条件にヒットしていないアカウントの情報が表示されていないこと' do
+        it '検索条件に一致していないアカウントが表示されていないこと' do
           expect_not_outline_of(user1)
           expect_not_outline_of(user2)
           expect_not_outline_of(grader2)
           expect_not_outline_of(login_user)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '1 件'
         end
       end
@@ -129,18 +129,18 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_not_grader_outline_of(user1)
           expect_not_grader_outline_of(login_user)
         end
 
-        it '検索条件にヒットしていないアカウントの情報が表示されていないこと' do
+        it '検索条件に一致していないアカウントが表示されていないこと' do
           expect_not_outline_of(grader1)
           expect_not_outline_of(grader2)
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '2 件'
         end
       end
@@ -160,16 +160,16 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_grader_outline_of(user1)
         end
 
-        it '検索条件にヒットしなかったアカウントの情報が表示されていないこと' do
+        it '検索条件に一致しなかったアカウントが表示されていないこと' do
           expect_not_outline_of(login_user)
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '1 件'
         end
       end
@@ -182,36 +182,36 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_grader_outline_of(user1)
           expect_grader_outline_of(login_user)
         end
 
-        it '検索条件にヒットしなかったアカウントの情報が表示されていないこと' do
+        it '検索条件に一致しなかったアカウントが表示されていないこと' do
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '2 件'
         end
       end
 
-      context '存在するメールアドレスで検索するとき' do
+      context '存在するemailで検索するとき' do
         before do
           fill_in 'メールアドレス', with: user1.email
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_grader_outline_of(user1)
         end
 
-        it '検索条件にヒットしなかったアカウントの情報が表示されていないこと' do
+        it '検索条件に一致しなかったアカウントが表示されていないこと' do
           expect_not_outline_of(login_user)
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたメールアドレスの数が表示されていること' do
+        it '検索条件に一致したメールアドレスの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '1 件'
         end
       end
@@ -237,18 +237,18 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_grader_outline_of(grader1)
           expect_grader_outline_of(login_user)
         end
 
-        it '検索条件にヒットしていないアカウントの情報が表示されていないこと' do
+        it '検索条件に一致していないアカウントが表示されていないこと' do
           expect_not_outline_of(user1)
           expect_not_outline_of(user2)
           expect_not_outline_of(grader2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '2 件'
         end
       end
@@ -263,18 +263,18 @@ describe 'フロント画面：アカウント検索', type: :system do
           click_on '検索'
         end
 
-        it '検索条件にヒットしたアカウントの情報が表示されていること' do
+        it '検索条件に一致したアカウントが表示されていること' do
           expect_grader_outline_of(user1)
         end
 
-        it '検索条件にヒットしていないアカウントの情報が表示されていないこと' do
+        it '検索条件に一致していないアカウントが表示されていないこと' do
           expect_not_outline_of(grader1)
           expect_not_outline_of(grader2)
           expect_not_outline_of(login_user)
           expect_not_outline_of(user2)
         end
 
-        it '検索条件にヒットしたアカウントの数が表示されていること' do
+        it '検索条件に一致したアカウントの数が表示されていること' do
           expect(page.find('#users_count')).to have_content '1 件'
         end
       end

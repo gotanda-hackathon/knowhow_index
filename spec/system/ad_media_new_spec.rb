@@ -12,7 +12,7 @@ describe 'フロント画面：広告媒体作成', type: :system do
     context '権限が not_grader のとき' do
       let(:login_user) { FactoryBot.create(:user, :not_grader) }
 
-      it_behaves_like 'トップページにリダイレクト'
+      it_behaves_like '権限が弱いこと'
     end
 
     context '権限が grader のとき' do
@@ -35,7 +35,7 @@ describe 'フロント画面：広告媒体作成', type: :system do
         end
       end
 
-      context 'すでに存在する媒体名を入力するとき' do
+      context 'すでに存在するnameを入力するとき' do
         let(:ad_medium) { FactoryBot.create(:ad_medium, company: login_user.company) }
 
         before do
