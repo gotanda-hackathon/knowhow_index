@@ -14,7 +14,6 @@ ja:
       export: "CSV出力"
     company:
       index: "企業一覧"
-      show: "企業詳細"
       edit: "企業編集"
       new: "企業作成"
       create: "企業作成"
@@ -27,8 +26,6 @@ ja:
       update: "広告媒体編集"
     user:
       index: "アカウント一覧"
-      mypage: "マイページ"
-      show: "アカウント詳細"
       edit: "アカウント編集"
       new: "アカウント作成"
       create: "アカウント作成"
