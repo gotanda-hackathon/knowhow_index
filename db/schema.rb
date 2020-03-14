@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_073732) do
+ActiveRecord::Schema.define(version: 2020_03_12_123141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_media", comment: "広告媒体マスターテーブル", force: :cascade do |t|
+    t.string "name", null: false, comment: "媒体名"
+    t.bigint "company_id", null: false, comment: "企業ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_ad_media_on_company_id"
+  end
 
   create_table "companies", comment: "利用企業テーブル", force: :cascade do |t|
     t.string "name", comment: "企業名"
@@ -42,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_01_073732) do
     t.index ["company_id"], name: "index_users_on_company_id"
   end
 
+  add_foreign_key "ad_media", "companies"
   add_foreign_key "sql_conditions", "users"
   add_foreign_key "users", "companies"
 end

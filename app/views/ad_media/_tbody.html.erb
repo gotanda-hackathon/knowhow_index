@@ -1,0 +1,20 @@
+<% ad_media.each.with_index(1) do |ad_medium, i| %>
+  <tr id="ad_medium_<%= ad_medium.id %>">
+    <td><%= i %></td>
+    <td><%= ad_medium.name %></td>
+    <% if current_user.grader? %>
+      <td id="edit_btn_<%= ad_medium.id %>">
+        <%= link_to edit_company_ad_medium_path(current_user.company, ad_medium), data: { turbolinks: false }, class: "btn green" do %>
+          <%= t('views.default.edit') %>
+          <i class="material-icons right">edit</i>
+        <% end %>
+      </td>
+      <td id="delete_btn_<%= ad_medium.id %>">
+        <%= link_to company_ad_medium_path(current_user.company, ad_medium), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
+          <%= t('views.default.destroy') %>
+          <i class="material-icons right">delete</i>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>

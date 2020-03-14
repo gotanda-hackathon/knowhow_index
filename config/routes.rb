@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :users, expect: [:show]
+    resources :ad_media, expect: [:show]
   end
 
   namespace :admin do

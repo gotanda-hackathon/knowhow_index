@@ -19,6 +19,12 @@ ja:
       new: "企業作成"
       create: "企業作成"
       update: "企業編集"
+    ad_medium:
+      index: "広告媒体一覧"
+      edit: "広告媒体編集"
+      new: "広告媒体作成"
+      create: "広告媒体作成"
+      update: "広告媒体編集"
     user:
       index: "アカウント一覧"
       mypage: "マイページ"
