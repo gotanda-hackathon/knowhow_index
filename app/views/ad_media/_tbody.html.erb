@@ -4,7 +4,7 @@
     <td><%= ad_medium.name %></td>
     <% if current_user.grader? %>
       <td id="edit_btn_<%= ad_medium.id %>">
-        <%= link_to edit_company_ad_medium_path(current_user.company, ad_medium), data: { turbolinks: false }, class: "btn green" do %>
+        <%= link_to edit_company_ad_medium_path(current_user.company, ad_medium), class: "btn green" do %>
           <%= t('views.default.edit') %>
           <i class="material-icons right">edit</i>
         <% end %>

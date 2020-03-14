@@ -7,7 +7,7 @@
     <td><%= user.show_grader %></td>
     <td><%= user.show_administrator %></td>
     <td id="edit_btn_<%= user.id %>">
-      <%= link_to edit_admin_user_path(user), data: { turbolinks: false }, class: "btn green" do %>
+      <%= link_to edit_admin_user_path(user), class: "btn green" do %>
         <%= t('views.default.edit') %>
         <i class="material-icons right">edit</i>
       <% end %>

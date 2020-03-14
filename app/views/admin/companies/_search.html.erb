@@ -9,7 +9,7 @@
           </div>
         </div>
         <h5 id="companies_count"><%= companies.total_count if companies %> 件</h5>
-        <%= form_with scope: :search_form, url: admin_companies_path, method: :get, data: { turbolinks: false }, local: true do |f| %>
+        <%= form_with scope: :search_form, url: admin_companies_path, method: :get, local: true do |f| %>
           <div class="row">
             <div class="input-field col s4">
               <%= f.text_field :name, id: 'name' %>
@@ -21,7 +21,7 @@
               <span><%= t('views.default.search') %></span>
               <i class="material-icons right">search</i>
             <% end %>
-            <%= link_to new_admin_company_path, data: { turbolinks: false }, class: "btn blue" do %>
+            <%= link_to new_admin_company_path, class: "btn blue" do %>
               <span><%= t('views.default.new') %></span>
               <i class="material-icons right">add</i>
             <% end %>

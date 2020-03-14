@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start() # TODO: turbolinks がデザインテンプレートのJSと相性が良くないので切る
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
