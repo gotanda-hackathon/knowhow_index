@@ -36,42 +36,4 @@ RSpec.describe AdMedium, type: :model do
       end
     end
   end
-
-  describe '#valid?' do
-    context '企業内で媒体名が重複するとき' do
-      let(:ad_medium) { FactoryBot.create(:ad_medium, company: company) }
-
-      it '無効であること' do
-        expect(FactoryBot.build(:ad_medium, name: ad_medium.name, company: company)).to be_invalid
-      end
-    end
-
-    context '企業内で媒体名が重複しないとき' do
-      before do
-        FactoryBot.create(:ad_medium, company: company)
-      end
-
-      it '有効であること' do
-        expect(FactoryBot.build(:ad_medium, company: company)).to be_valid
-      end
-    end
-
-    context '別企業で媒体名が重複するとき' do
-      let(:ad_medium) { FactoryBot.create(:ad_medium) }
-
-      it '有効であること' do
-        expect(FactoryBot.build(:ad_medium, name: ad_medium.name)).to be_valid
-      end
-    end
-
-    context '別企業で媒体名が重複しないとき' do
-      before do
-        FactoryBot.create(:ad_medium, company: company)
-      end
-
-      it '有効であること' do
-        expect(FactoryBot.build(:ad_medium)).to be_valid
-      end
-    end
-  end
 end

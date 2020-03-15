@@ -24,11 +24,7 @@ class AdMedium < ApplicationRecord
   belongs_to :company
 
   validates :name, presence: true, length: { maximum: 255 }
-  validate :name_must_not_be_duplicated_within_same_company
-
-  def name_must_not_be_duplicated_within_same_company
-    errors.add :name, 'はすでに存在しています' if AdMedium.where(company: company).pluck(:name).any? { |n| n.include?(name) }
-  end
+  validates :name, uniqueness: { scope: :company_id }
 
   class << self
     def csv_attributes

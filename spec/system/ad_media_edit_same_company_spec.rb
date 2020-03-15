@@ -61,7 +61,7 @@ describe 'フロント画面：ログインアカウントと同じ企業に紐�
           aggregate_failures do
             expect(page).to have_css '.red.lighten-4'
             expect(page).to have_content '更新に失敗しました'
-            expect(page).to have_content '広告媒体名はすでに存在しています'
+            expect(page).to have_content '広告媒体名はすでに存在します'
           end
         end
       end
