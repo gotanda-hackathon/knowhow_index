@@ -8,7 +8,7 @@ class UserSearchForm
   attr_accessor :grader
 
   def search(current_user)
-    records = User.same_as_current_user_company(current_user)
+    records = User.same_company_with(current_user)
     records = scoped_by_user(records)
     records = scoped_by_email(records)
     records = scoped_by_grader(records)

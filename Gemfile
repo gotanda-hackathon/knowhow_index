@@ -58,6 +58,7 @@ group :test do
 end
 
 # 追加 gem
+gem 'activerecord-import'
 gem 'annotate'
 gem 'carrierwave'
 gem 'draper'

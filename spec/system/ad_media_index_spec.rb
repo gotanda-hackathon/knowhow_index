@@ -35,11 +35,11 @@ describe 'フロント画面：広告媒体一覧', type: :system do
       it_behaves_like 'ボタンエクスペクテーション：be_able_to_new'
 
       it '編集ボタンがログインアカウントと同じ企業に紐づくAdMediumの数だけあること' do
-        expect(page).to have_content('編集', count: AdMedium.same_as_current_user_company(login_user).count)
+        expect(page).to have_content('編集', count: AdMedium.same_company_with(login_user).count)
       end
 
       it '削除ボタンがログインアカウントと同じ企業に紐づくAdMediumの数だけあること' do
-        expect(page).to have_content('削除', count: AdMedium.same_as_current_user_company(login_user).count)
+        expect(page).to have_content('削除', count: AdMedium.same_company_with(login_user).count)
       end
     end
   end

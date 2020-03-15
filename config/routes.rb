@@ -6,9 +6,15 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  concern :csv_importable do
+    collection do
+      post :csv_import
+    end
+  end
+
   resources :companies do
     resources :users, expect: [:show]
-    resources :ad_media, expect: [:show]
+    resources :ad_media, expect: [:show], concerns: :csv_importable
   end
 
   namespace :admin do
