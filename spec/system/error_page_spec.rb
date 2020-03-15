@@ -23,7 +23,7 @@ describe 'エラーページ', type: :system, js: true do
   context '404エラーページに遷移するとき' do
     before do
       sign_in_as(login_user)
-      visit '/404error_page'
+      visit '/companies/1/users/2/edit'
     end
 
     it '404エラーが出ること' do
