@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'フロント画面：ログインページ', type: :system do
+describe 'ログインページ', type: :system do
   context '正しくログインするとき' do
     before do
       sign_in_as(login_user)
