@@ -12,14 +12,11 @@ describe 'エラーページ', type: :system, js: true do
       sign_in_as(login_user)
       allow(UserSearchForm).to receive(:new).and_return(my_instance)
       allow(my_instance).to receive(:search).and_throw(Exception)
-      Rails.logger.should_receive(:error).exactly(4).times
       visit company_users_path(login_user.company)
     end
 
     it '500エラーが出ること' do
-      aggregate_failures do
-        expect(page).to have_content 'エラーが発生しました。管理者に問い合わせください。'
-      end
+      expect(page).to have_content 'エラーが発生しました。管理者に問い合わせください。'
     end
   end
 
