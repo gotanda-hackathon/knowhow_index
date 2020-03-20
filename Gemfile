@@ -33,7 +33,6 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'rubycritic', require: false
 end
 
 group :development do
@@ -68,4 +67,3 @@ gem 'pg'
 gem 'rmagick'
 gem 'seed-fu'
 gem 'settingslogic'
-gem 'unicorn'

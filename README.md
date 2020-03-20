@@ -60,8 +60,6 @@ GitHub上でのプルリクベースの開発手法を採択
 ## 追加しているgemの補足
 - bullet  
   デフォルトで、development/test環境では、N+1がある場合は500になるようにしています。
-- [rubycritic](https://github.com/whitesmith/rubycritic)
-  - `$ rubycritic` で静的コード解析ができる
 - [seed-fu](https://github.com/mbleigh/seed-fu)
   - db/fixtures 配下に初期データをDSLで書き、`$ bin/rails db:seed_fu` で作成・更新できる
 - [settingslogic](https://github.com/binarylogic/settingslogic)
