@@ -1,0 +1,2 @@
+name,email,password,password_confirmation,company_id,administrator,grader
+test,tester@gmail.com,123abc,123abc,1,TRUE,TRUE

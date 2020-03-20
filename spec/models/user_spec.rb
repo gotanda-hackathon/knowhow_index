@@ -27,6 +27,26 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
 
+  describe '.csv_import!' do
+    context '正しいCSVデータをインポートするとき' do
+      # テスト用 csv ファイルに合わせた company を作成しておく
+      let(:company) { FactoryBot.create(:company, id: 1) }
+      let!(:user) { FactoryBot.create(:user, company: company) }
+
+      it 'ユーザー作成に成功すること' do
+        file = File.open(Rails.root.join('spec/fixtures/csvs/import_test_user.csv'))
+        aggregate_failures do
+          expect { described_class.csv_import!(file, user) }.to change(described_class, :count).from(1).to(2)
+          expect(described_class.last.name).to eq 'test'
+          expect(described_class.last.email).to eq 'tester@gmail.com'
+          expect(described_class.last.company).to eq user.company
+          expect(described_class.last.administrator).to eq true
+          expect(described_class.last.grader).to eq true
+        end
+      end
+    end
+  end
+
   describe '#get_search_condition' do
     context 'paramsが空ハッシュのとき' do
       context 'current_userがまだ検索を行っていないとき' do

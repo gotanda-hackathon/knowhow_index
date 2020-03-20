@@ -5,7 +5,7 @@
 # Table name: users # ユーザーテーブル
 #
 #  id                          :bigint           not null, primary key
-#  admin(管理者フラグ)         :boolean          default("false"), not null
+#  administrator(管理者フラグ)         :boolean          default("false"), not null
 #  email(メールアドレス)       :string           not null
 #  grader(採点者フラグ)        :boolean          default("false"), not null
 #  name(氏名)                  :string           not null
@@ -44,6 +44,30 @@ class User < ApplicationRecord
       Psych.safe_load(sql_condition.condition, [ActiveSupport::HashWithIndifferentAccess])
     else
       {}
+    end
+  end
+
+  class << self
+    def csv_attributes
+      %w[name email password password_confirmation company_id administrator grader]
+    end
+
+    def csv_import!(file, user)
+      users = []
+      CSV.foreach(file.path, encoding: Encoding::SJIS, headers: true) do |row|
+        user = user.company.users.new
+        user.attributes = row.to_hash.slice(*csv_attributes)
+        users << user
+      end
+      begin
+        import!(users, validate: true, validate_uniqueness: true)
+      rescue ActiveRecord::RecordInvalid => e
+        logger.error '[LOG]CSVアップデートのバリデーションエラー'
+        logger.error "[LOG]エラークラス：#{e.class}"
+        logger.error "[LOG]エラーメッセージ：#{e.message}"
+        users = []
+        retry
+      end
     end
   end
 end
