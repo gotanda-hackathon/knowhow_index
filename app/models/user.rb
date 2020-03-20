@@ -73,9 +73,9 @@ class User < ApplicationRecord
     def generate_csv_by(user)
       CSV.generate(encoding: Encoding::SJIS, headers: true) do |csv|
         csv << csv_attributes
-        same_company_with(user).find_each do |user|
+        same_company_with(user).find_each do |each_user|
           csv << csv_attributes.map do |attr|
-            user.send(attr)
+            each_user.send(attr)
           end
         end
       end
