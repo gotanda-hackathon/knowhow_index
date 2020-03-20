@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :companies do
-    resources :users, expect: [:show]
+    resources :users, expect: [:show], concerns: :csv_importable
     resources :ad_media, expect: [:show], concerns: :csv_importable
   end
 
