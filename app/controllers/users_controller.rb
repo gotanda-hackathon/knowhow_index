@@ -4,11 +4,23 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
   before_action :not_accessible_different_company_data, only: %i[edit update destroy]
   before_action :not_accessible_except_to_grader, only: %i[new edit update destroy]
+  before_action :require_setting_csv_file, only: %i[csv_import]
 
   def index
     condition = current_user.get_search_condition(code: 'user', params: search_params.to_unsafe_h)
     @search_form = UserSearchForm.new(condition)
     @users = @search_form.search(current_user).page(params[:page]).per(Settings.pagination.default).decorate
+  end
+
+  def csv_import
+    before_count = User.count
+    User.csv_import!(params[:file], current_user)
+    imported_count = User.count - before_count
+    if imported_count.zero?
+      redirect_to company_users_url(current_user.company), flash: { red: t('views.flash.fail_csv_data') }
+    else
+      redirect_to company_users_url(current_user.company), flash: { green: t('views.flash.create_csv_data', count: imported_count) }
+    end
   end
 
   def new
@@ -62,5 +74,9 @@ class UsersController < ApplicationController
 
   def not_accessible_except_to_grader
     redirect_to root_url, flash: { red: t('views.flash.not_have_authority') } unless current_user.grader?
+  end
+
+  def require_setting_csv_file
+    redirect_to company_users_url(current_user.company), flash: { red: t('views.flash.non_csv_file') } unless params[:file].present? && File.extname(params[:file].original_filename) == '.csv'
   end
 end

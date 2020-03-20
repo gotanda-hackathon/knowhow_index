@@ -27,6 +27,8 @@ describe 'フロント画面：アカウント一覧', type: :system do
       it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_new'
       it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_edit'
       it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_destroy'
+      it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_csv_import'
+      it_behaves_like 'ボタンエクスペクテーション：not_be_able_to_csv_export'
     end
 
     context '権限が grader のとき' do
@@ -34,6 +36,8 @@ describe 'フロント画面：アカウント一覧', type: :system do
 
       it_behaves_like '一覧表示'
       it_behaves_like 'ボタンエクスペクテーション：be_able_to_new'
+      it_behaves_like 'ボタンエクスペクテーション：be_able_to_csv_import'
+      it_behaves_like 'ボタンエクスペクテーション：be_able_to_csv_export'
 
       it '編集ボタンがログインアカウントと同じ企業に紐づくUserの数だけあること' do
         expect(page).to have_content('編集', count: User.same_company_with(login_user).count)
@@ -41,6 +45,20 @@ describe 'フロント画面：アカウント一覧', type: :system do
 
       it '削除ボタンがログインアカウントと同じ企業に紐づくUserの数だけあること' do
         expect(page).to have_content('削除', count: User.same_company_with(login_user).count)
+      end
+
+      context 'ファイルをセットせずにCSV取込ボタンを押すとき' do
+        before do
+          click_on 'CSV取込'
+        end
+
+        it 'エラーになること' do
+          aggregate_failures do
+            expect(page).to have_current_path company_users_path(login_user.company)
+            expect(page).to have_css '.red.lighten-4'
+            expect(page).to have_content 'CSVファイルを取り込んでください'
+          end
+        end
       end
     end
   end
