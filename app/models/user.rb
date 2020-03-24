@@ -5,7 +5,7 @@
 # Table name: users # ユーザーテーブル
 #
 #  id                          :bigint           not null, primary key
-#  administrator(管理者フラグ)         :boolean          default("false"), not null
+#  administrator(管理者フラグ) :boolean          default("false"), not null
 #  email(メールアドレス)       :string           not null
 #  grader(採点者フラグ)        :boolean          default("false"), not null
 #  name(氏名)                  :string           not null
@@ -17,6 +17,7 @@
 # Indexes
 #
 #  index_users_on_company_id  (company_id)
+#  index_users_on_email       (email) UNIQUE
 #
 # Foreign Keys
 #

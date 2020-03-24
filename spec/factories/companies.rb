@@ -9,6 +9,10 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+# Indexes
+#
+#  index_companies_on_name  (name) UNIQUE
+#
 FactoryBot.define do
   factory :company do
     sequence(:name) { |n| "テスト企業#{n}" }
