@@ -17,6 +17,7 @@
 # Indexes
 #
 #  index_users_on_company_id  (company_id)
+#  index_users_on_email       (email) UNIQUE
 #
 # Foreign Keys
 #
