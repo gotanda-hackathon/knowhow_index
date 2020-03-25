@@ -7,9 +7,20 @@ class CategoriesController < ApplicationController
     @categories  = @search_form.search(current_user).paginated(params[:page]).decorate
   end
 
-  def new; end
+  def new
+    @category = Category.new
+  end
 
-  def create; end
+  def create
+    @category = Category.new(category_params)
+
+    if @category.save
+      redirect_to company_categories_url(current_user.company), flash: { green: t('views.flash.create_success') }
+    else
+      flash.now[:red] = t('views.flash.create_danger')
+      render :new
+    end
+  end
 
   def edit; end
 
@@ -18,6 +29,10 @@ class CategoriesController < ApplicationController
   def destroy; end
 
   private
+
+  def category_params
+    params.require(:category).permit(:name, :company_id)
+  end
 
   def search_params
     params.fetch(:search_form, {}).permit(:name)
