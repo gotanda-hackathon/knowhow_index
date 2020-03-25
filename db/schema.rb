@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_044933) do
+ActiveRecord::Schema.define(version: 2020_03_24_235115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2020_03_24_044933) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_ad_media_on_company_id"
     t.index ["name", "company_id"], name: "index_ad_media_on_name_and_company_id", unique: true
+  end
+
+  create_table "categories", comment: "カテゴリマスターテーブル", force: :cascade do |t|
+    t.string "name", null: false, comment: "カテゴリ名"
+    t.bigint "company_id", null: false, comment: "企業ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_categories_on_company_id"
   end
 
   create_table "companies", comment: "利用企業テーブル", force: :cascade do |t|
@@ -54,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_044933) do
   end
 
   add_foreign_key "ad_media", "companies"
+  add_foreign_key "categories", "companies"
   add_foreign_key "sql_conditions", "users"
   add_foreign_key "users", "companies"
 end
