@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :category do
-    name { 'MyString' }
-    company { nil }
+    sequence(:name) { |n| "テストカテゴリ名#{n}" }
+    association :company
   end
 end
