@@ -36,7 +36,10 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @category.destroy!
+    redirect_to company_categories_url(current_user.company), flash: { green: t('views.flash.destroy_success') }
+  end
 
   private
 
