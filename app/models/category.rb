@@ -22,4 +22,7 @@ class Category < ApplicationRecord
   include CompanyMatchable
 
   belongs_to :company
+
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, uniqueness: { scope: :company_id }
 end
