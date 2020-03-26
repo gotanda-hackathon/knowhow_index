@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to company_categories_url(current_user.company, @category), flash: { green: t('views.flash.update_success') }
+      redirect_to edit_company_category_url(current_user.company, @category), flash: { green: t('views.flash.update_success') }
     else
       flash.now[:red] = t('views.flash.update_danger')
       render :edit

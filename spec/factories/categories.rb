@@ -12,7 +12,8 @@
 #
 # Indexes
 #
-#  index_categories_on_company_id  (company_id)
+#  index_categories_on_company_id           (company_id)
+#  index_categories_on_name_and_company_id  (name,company_id) UNIQUE
 #
 # Foreign Keys
 #
