@@ -1,4 +1,7 @@
 <%= render partial: 'search', locals: { clients: @clients } %>
+<% if current_user.grader? %>
+    <%= render partial: 'csv_import' %>
+<% end %>
 <div class="row">
   <div class="col s12">
     <div class="card">

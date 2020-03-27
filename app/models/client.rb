@@ -25,4 +25,39 @@ class Client < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :name, uniqueness: { scope: :company_id }
+
+  class << self
+    def csv_attributes
+      %w[name]
+    end
+
+    def csv_import!(file, user)
+      clients = []
+      CSV.foreach(file.path, encoding: Encoding::SJIS, headers: true) do |row|
+        client = user.company.clients.new
+        client.attributes = row.to_hash.slice(*csv_attributes)
+        clients << client
+      end
+      begin
+        import!(clients, validate: true, validate_uniqueness: true)
+      rescue ActiveRecord::RecordInvalid => e
+        logger.error '[LOG]CSVアップデートのバリデーションエラー'
+        logger.error "[LOG]エラークラス：#{e.class}"
+        logger.error "[LOG]エラーメッセージ：#{e.message}"
+        clients = []
+        retry
+      end
+    end
+
+    def generate_csv_by(user)
+      CSV.generate(encoding: Encoding::SJIS, headers: true) do |csv|
+        csv << csv_attributes
+        same_company_with(user).find_each do |client|
+          csv << csv_attributes.map do |attr|
+            client.send(attr)
+          end
+        end
+      end
+    end
+  end
 end
