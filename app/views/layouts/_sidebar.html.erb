@@ -2,6 +2,7 @@
   user_active = params[:controller] == 'users' ? 'active' : ''
   ad_medium_active = params[:controller] == 'ad_media' ? 'active' : ''
   category_active = params[:controller] == 'categories' ? 'active' : ''
+  client_active = params[:controller] == 'clients' ? 'active' : ''
   admin_company_active = params[:controller] == 'admin/companies' ? 'active' : ''
   admin_user_active = params[:controller] == 'admin/users' ? 'active' : ''
 %>
@@ -26,6 +27,10 @@
           <%= link_to company_categories_path(current_user.company), class: 'collapsible-header' do %>
               <i class="material-icons">category</i>
               <span class="hide-menu"><%= t('views.category.index') %></span>
+        <li class="<%= client_active %>">
+          <%= link_to company_client_path(current_user.company), class: 'collapsible-header' do %>
+              <i class="material-icons">account_box</i>
+              <span class="hide-menu"><%= t('views.client.index') %></span>
           <% end %>
         </li>
         <% if current_user.administrator? %>
