@@ -22,5 +22,19 @@
 require 'rails_helper'
 
 RSpec.describe Client, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:company) { FactoryBot.create(:company) }
+  let(:user) { FactoryBot.create(:user) }
+
+  describe '.csv_import!' do
+    context '正しいCSVデータをインポートするとき' do
+      it 'クライアントの作成に成功すること' do
+        file = File.open(Rails.root.join('spec/fixtures/csvs/import_test_client.csv'))
+        aggregate_failures do
+          expect { described_class.csv_import!(file, user) }.to change(described_class, :count).from(0).to(1)
+          expect(described_class.first.name).to eq 'test_client'
+          expect(described_class.first.company).to eq user.company
+        end
+      end
+    end
+  end
 end

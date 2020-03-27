@@ -48,7 +48,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to company_clients_url(current_user.company, @client), flash: { green: t('views.flash.update_success') }
+      redirect_to edit_company_client_url(current_user.company, @client), flash: { green: t('views.flash.update_success') }
     else
       flash.now[:red] = t('views.flash.update_danger')
       render :edit
