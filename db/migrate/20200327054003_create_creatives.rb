@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class CreateCompanies < ActiveRecord::Migration[6.0]
+class CreateCreatives < ActiveRecord::Migration[6.0]
   def change
-    create_table :companies, comment: '利用企業テーブル' do |t|
-      t.string :name, comment: '企業名'
-
+    create_table :creatives, comment: 'クリエイティブテーブル' do |t|
+      t.string  :name, comment: '企業名'
+      t.integer :company_id, null: false, comment: '企業ID'
       t.timestamps
     end
   end

@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 2020_03_27_134812) do
     t.index ["name"], name: "index_companies_on_name", unique: true
   end
 
+  create_table "creatives", comment: "クリエイティブテーブル", force: :cascade do |t|
+    t.string "name", comment: "企業名"
+    t.integer "company_id", null: false, comment: "企業ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sql_conditions", comment: "検索条件テーブル", force: :cascade do |t|
     t.string "code", null: false, comment: "検索対象フックコード"
     t.text "condition", comment: "検索条件"
