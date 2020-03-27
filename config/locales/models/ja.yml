@@ -22,6 +22,9 @@ ja:
       category:
         <<: *default
         name: カテゴリ名
+      client:
+        <<: *default
+        name: クライアント名
       user:
         <<: *default
         administrator: 管理者権限
