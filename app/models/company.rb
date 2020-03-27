@@ -16,6 +16,7 @@
 class Company < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :ad_media, dependent: :destroy
+  has_many :creatives, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }
 end
