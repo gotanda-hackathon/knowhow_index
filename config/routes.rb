@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :users, expect: [:show], concerns: :csv_importable
     resources :ad_media, expect: [:show], concerns: :csv_importable
     resources :categories, expect: [:show], concerns: :csv_importable
+    resources :clients, expect: [:show]
   end
 
   namespace :admin do

@@ -21,7 +21,7 @@
 #
 FactoryBot.define do
   factory :client do
-    name { 'MyString' }
-    company { nil }
+    sequence(:name) { |n| "テストクライアント名#{n}" }
+    association :company
   end
 end

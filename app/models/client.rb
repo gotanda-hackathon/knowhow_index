@@ -20,6 +20,7 @@
 #  fk_rails_...  (company_id => companies.id)
 #
 class Client < ApplicationRecord
+  include CompanyMatchable
   belongs_to :company
 
   validates :name, presence: true, length: { maximum: 255 }
