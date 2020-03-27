@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: creative # クリエイティブテーブル
+# Table name: creatives # クリエイティブテーブル
 #
 #  id                 :bigint           not null, primary key
 #  name(企業名)       :string           not null
@@ -10,14 +10,14 @@
 #
 # Indexes
 #
-#  index_creative_on_company_id           (company_id)
-#  index_creative_on_name_and_company_id  (name,company_id) UNIQUE
+#  index_creatives_on_company_id           (company_id)
+#  index_creatives_on_name_and_company_id  (name,company_id) UNIQUE
 #
 # Foreign Keys
 #
 #  fk_rails_...  (company_id => companies.id)
 #
-class creative < ApplicationRecord
+class Creative < ApplicationRecord
   include CompanyMatchable
 
   belongs_to :company
