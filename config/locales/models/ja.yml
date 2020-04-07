@@ -25,6 +25,9 @@ ja:
         grader: 採点者権限
         company_id: 企業名
         user_id: アカウント名
+      creative:
+        <<: *default
+        name: クリエイティブ名
   activemodel:
     attributes:
       default: &default
