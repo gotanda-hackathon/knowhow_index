@@ -24,11 +24,11 @@ class Creative < ApplicationRecord
     end
 
     def csv_import!(file, creative)
-      creative = []
+      creatives = []
       CSV.foreach(file.path, encoding: Encoding::SJIS, headers: true) do |row|
-        creative = creative.company.creative.new
+        creatives = creative.company.creatives.new
         creative.attributes = row.to_hash.slice(*csv_attributes)
-        creative << creative
+        creatives << creative
       end
       begin
         import!(creative, validate: true, validate_uniqueness: true)
@@ -36,7 +36,7 @@ class Creative < ApplicationRecord
         logger.error '[LOG]CSVアップデートのバリデーションエラー'
         logger.error "[LOG]エラークラス：#{e.class}"
         logger.error "[LOG]エラーメッセージ：#{e.message}"
-        creative = []
+        creatives = []
         retry
       end
     end
