@@ -87,5 +87,6 @@ class CreativesController < ApplicationController
 
   def not_accessible_except_to_grader
     redirect_to root_url, flash: { red: t('views.flash.not_have_authority') } unless current_user.grader?
-  end  
+  end
+
 end
