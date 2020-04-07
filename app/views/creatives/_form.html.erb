@@ -5,13 +5,5 @@
     <p class="red-text text-darken-4"><%= creative.error_messages_for :name %></p>
   </div>
 </div>
-<div class="row">
-  <div class="input-field col s6">
-    <p>
-      <%= f.check_box :grader %>
-      <span><%= f.label :grader %><span>
-    </p>
-  </div>
-</div>
 <%= f.hidden_field :company_id, value: current_user.company.id %>
 <%= f.submit class: 'btn blue' %>
