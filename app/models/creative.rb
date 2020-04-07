@@ -5,17 +5,10 @@
 # Table name: creatives # クリエイティブテーブル
 #
 #  id                 :bigint           not null, primary key
-#  name(企業名)       :string           not null
-#  company_id(企業ID) :bigint           not null
-#
-# Indexes
-#
-#  index_creatives_on_company_id           (company_id)
-#  index_creatives_on_name_and_company_id  (name,company_id) UNIQUE
-#
-# Foreign Keys
-#
-#  fk_rails_...  (company_id => companies.id)
+#  name(企業名)       :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  company_id(企業ID) :integer          not null
 #
 class Creative < ApplicationRecord
   include CompanyMatchable
@@ -30,10 +23,10 @@ class Creative < ApplicationRecord
       %w[name]
     end
 
-    def csv_import!(file, user)
+    def csv_import!(file, creative)
       creative = []
       CSV.foreach(file.path, encoding: Encoding::SJIS, headers: true) do |row|
-        creative = user.company.creative.new
+        creative = creative.company.creative.new
         creative.attributes = row.to_hash.slice(*csv_attributes)
         creative << creative
       end
@@ -48,10 +41,10 @@ class Creative < ApplicationRecord
       end
     end
 
-    def generate_csv_by(user)
+    def generate_csv_by(creative)
       CSV.generate(encoding: Encoding::SJIS, headers: true) do |csv|
         csv << csv_attributes
-        same_company_with(user).find_each do |creative|
+        same_company_with(creative).find_each do |creative|
           csv << csv_attributes.map do |attr|
             creative.send(attr)
           end

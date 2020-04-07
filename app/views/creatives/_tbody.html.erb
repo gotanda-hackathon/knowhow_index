@@ -1,9 +1,7 @@
 <% creatives.each.with_index(1) do |creative, i| %>
-  <tr id="user_<%= user.id %>">
+  <tr id="user_<%= creative.id %>">
     <td><%= i %></td>
     <td><%= creative.name %></td>
-    <td><%= creative.email %></td>
-    <td><%= creative.show_grader %></td>
     <% if current_user.grader? %>
       <td id="edit_btn_<%= creative.id %>">
         <%= link_to edit_company_creative_path(current_user.company, creative), class: "btn green" do %>
