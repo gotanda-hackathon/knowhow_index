@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="table-responsive m-b-20">
-          <%= form_with model: @creative, url: company_creative_path(current_creative.company, @creative), local: true do |f| %>
+          <%= form_with model: @creative, url: company_creative_path(current_user.company, @creative), local: true do |f| %>
             <%= render partial: 'form', locals: { f: f, creative: @creative } %>
           <% end %>
         </div>
