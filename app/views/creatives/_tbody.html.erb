@@ -1,0 +1,22 @@
+<% creatives.each.with_index(1) do |creative, i| %>
+  <tr id="user_<%= user.id %>">
+    <td><%= i %></td>
+    <td><%= creative.name %></td>
+    <td><%= creative.email %></td>
+    <td><%= creative.show_grader %></td>
+    <% if current_user.grader? %>
+      <td id="edit_btn_<%= creative.id %>">
+        <%= link_to edit_company_creative_path(current_user.company, creative), class: "btn green" do %>
+          <%= t('views.default.edit') %>
+          <i class="material-icons right">edit</i>
+        <% end %>
+      </td>
+      <td id="delete_btn_<%= creative.id %>">
+        <%= link_to company_creative_path(current_user.company, creative), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
+          <%= t('views.default.destroy') %>
+          <i class="material-icons right">delete</i>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
