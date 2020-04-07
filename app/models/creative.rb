@@ -44,9 +44,9 @@ class Creative < ApplicationRecord
     def generate_csv_by(creative)
       CSV.generate(encoding: Encoding::SJIS, headers: true) do |csv|
         csv << csv_attributes
-        same_company_with(creative).find_each do |creative|
+        same_company_with(creative).find_each do |c|
           csv << csv_attributes.map do |attr|
-            creative.send(attr)
+            c.send(attr)
           end
         end
       end

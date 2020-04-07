@@ -9,7 +9,7 @@ class CreativesController < ApplicationController
   def index
     condition = current_user.get_search_condition(code: 'creative', params: search_params.to_unsafe_h)
     @search_form = CreativeSearchForm.new(condition)
-    @creatives  = @search_form.search(current_user).paginated(params[:page]).decorate
+    @creatives = @search_form.search(current_user).paginated(params[:page]).decorate
 
     respond_to do |format|
       format.html
