@@ -1,0 +1,11 @@
+<tr>
+  <th>ID</th>
+  <th><%= Creative.human_attribute_name :name %></th>
+  <th><%= Creative.human_attribute_name :email %></th>
+  <th><%= Creative.human_attribute_name :grader %></th>
+  
+  <% if current_user.grader? %>
+    <th></th>
+    <th></th>
+  <% end %>
+</tr>
