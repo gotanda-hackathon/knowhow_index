@@ -1,5 +1,6 @@
 <%=
   user_active = params[:controller] == 'users' ? 'active' : ''
+  creative_active = params[:controller] == 'creative' ? 'active' : ''
   ad_medium_active = params[:controller] == 'ad_media' ? 'active' : ''
   category_active = params[:controller] == 'categories' ? 'active' : ''
   client_active = params[:controller] == 'clients' ? 'active' : ''
@@ -33,6 +34,11 @@
           <%= link_to company_clients_path(current_user.company), class: 'collapsible-header' do %>
             <i class="material-icons">account_box</i>
             <span class="hide-menu"><%= t('views.client.index') %></span>
+          <% end %>
+        <li class="<%= creative_active %>">
+          <%= link_to company_creatives_path(current_user.company), class: 'collapsible-header' do %>
+            <i class="material-icons">chrome_reader_mode</i>
+            <span class="hide-menu"><%= t('views.creative.index') %></span>
           <% end %>
         </li>
         <% if current_user.administrator? %>
