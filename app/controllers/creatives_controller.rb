@@ -1,5 +1,4 @@
 class CreativesController < ApplicationController
-
   before_action :set_creative, only: %i[edit update destroy]
   before_action :not_accessible_different_company_data, only: %i[edit update destroy]
   before_action :not_accessible_except_to_grader, only: %i[new edit update destroy]
@@ -88,5 +87,4 @@ class CreativesController < ApplicationController
   def not_accessible_except_to_grader
     redirect_to root_url, flash: { red: t('views.flash.not_have_authority') } unless current_user.grader?
   end
-
 end
