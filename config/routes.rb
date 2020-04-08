@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   resources :companies do
     resources :users, expect: [:show], concerns: :csv_importable
     resources :ad_media, expect: [:show], concerns: :csv_importable
+    resources :indicators, expect: [:show], concerns: :csv_importable
   end
 
   namespace :admin do
     resources :companies, expect: [:show]
     resources :users, expect: [:show]
+    resources :indicators, expect: [:show]
   end
 
   match '*path', to: 'application#error404', via: :all
