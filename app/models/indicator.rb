@@ -44,7 +44,7 @@ class Indicator < ApplicationRecord
         logger.error '[LOG]CSVアップデートのバリデーションエラー'
         logger.error "[LOG]エラークラス：#{e.class}"
         logger.error "[LOG]エラーメッセージ：#{e.message}"
-        indicator = []
+        indicators = []
         retry
       end
     end
