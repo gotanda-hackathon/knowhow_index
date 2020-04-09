@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdMediumDecorator < Draper::Decorator
+class IndicatorDecorator < Draper::Decorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

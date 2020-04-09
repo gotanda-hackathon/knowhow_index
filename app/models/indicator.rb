@@ -5,20 +5,21 @@
 # Table name: indicators # 改善指標マスターテーブル
 #
 #  id                 :bigint           not null, primary key
-#  name(指標名)       :string           not null
+#  name(改善指標名)   :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #  company_id(企業ID) :bigint           not null
 #
 # Indexes
 #
-#  index_indicator_on_company_id           (company_id)
-#  index_indicator_on_name_and_company_id  (name,company_id) UNIQUE
+#  index_indicators_on_company_id  (company_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (company_id => companies.id)
 #
 class Indicator < ApplicationRecord
-  include IndicatorMatchable
+  include CompanyMatchable
 
   belongs_to :company
 
