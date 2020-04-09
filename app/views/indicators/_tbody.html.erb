@@ -10,7 +10,7 @@
         <% end %>
       </td>
       <td id="delete_btn_<%= indicator.id %>">
-        <%= link_to company_indicators_path(current_user.company, indicator), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
+        <%= link_to company_indicator_path(current_user.company, indicator), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
           <%= t('views.default.destroy') %>
           <i class="material-icons right">delete</i>
         <% end %>

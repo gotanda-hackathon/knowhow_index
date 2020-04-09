@@ -32,14 +32,14 @@ class Indicator < ApplicationRecord
     end
 
     def csv_import!(file, user)
-      indicator = []
+      indicators = []
       CSV.foreach(file.path, encoding: Encoding::SJIS, headers: true) do |row|
-        indicator = user.company.indicator.new
+        indicator = user.company.indicators.new
         indicator.attributes = row.to_hash.slice(*csv_attributes)
-        indicator << indicator
+        indicators << indicator
       end
       begin
-        import!(indicator, validate: true, validate_uniqueness: true)
+        import!(indicators, validate: true, validate_uniqueness: true)
       rescue ActiveRecord::RecordInvalid => e
         logger.error '[LOG]CSVアップデートのバリデーションエラー'
         logger.error "[LOG]エラークラス：#{e.class}"

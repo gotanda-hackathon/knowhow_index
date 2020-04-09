@@ -2,7 +2,7 @@
   <div class="col s12">
     <div class="card">
       <div class="card-content">
-        <%= form_with url: csv_import_company_ad_media_path(current_user.company), multipart: :true, local: true do %>
+        <%= form_with url: csv_import_company_indicators_path(current_user.company), multipart: :true, local: true do %>
           <div class="file-field input-field">
             <div class="btn grey lighten-1">
               <span><%= t('views.default.csv_attachment') %></span>
@@ -17,7 +17,7 @@
             <span><%= t('views.default.csv_import') %></span>
             <i class="material-icons right">cloud_upload</i>
           <% end %>
-          <%= link_to company_ad_media_path(current_user.company, format: :csv), class: 'btn green' do %>
+          <%= link_to company_indicators_path(current_user.company, format: :csv), class: 'btn green' do %>
             <span><%= t('views.default.csv_export') %></span>
             <i class="material-icons right">cloud_download</i>
           <% end %>
