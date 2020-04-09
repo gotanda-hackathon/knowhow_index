@@ -35,6 +35,12 @@
             <span class="hide-menu"><%= t('views.client.index') %></span>
           <% end %>
         </li>
+        <li class="<%= ad_medium_active %>">
+          <%= link_to company_indicators_path(current_user.company), class: 'collapsible-header' do %>
+            <i class="material-icons">timeline</i>
+            <span class="hide-menu"><%= t('views.indicator.index') %></span>
+          <% end %>
+        </li>
         <% if current_user.administrator? %>
           <li class="small-cap"><span class="hide-menu"> 管理者機能</span></li>
           <li class="<%= admin_company_active %>">
