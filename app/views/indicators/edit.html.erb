@@ -8,8 +8,8 @@
           </div>
         </div>
         <div class="table-responsive m-b-20">
-          <%= form_with model: @ad_medium, url: company_ad_medium_path(current_user.company, @ad_medium), local: true do |f| %>
-            <%= render partial: 'form', locals: { f: f, ad_medium: @ad_medium } %>
+          <%= form_with model: @indicator, url: company_indicator_path(current_user.company, @indicator), local: true do |f| %>
+            <%= render partial: 'form', locals: { f: f, indicator: @indicator } %>
           <% end %>
         </div>
       </div>

@@ -1,5 +1,3 @@
-<% p "--------" %>
-<% p @indicators %>
 <%= render partial: 'search', locals: { indicator: @indicators } %>
 <% if current_user.grader? %>
   <%= render partial: 'csv_import' %>
@@ -14,7 +12,7 @@
               <%= render 'thead' %>
             </thead>
             <tbody>
-              <%= render partial: 'tbody', locals: { ad_media: @indicators } %>
+              <%= render partial: 'tbody', locals: { indicator: @indicators } %>
             </tbody>
           </table>
         </div>
