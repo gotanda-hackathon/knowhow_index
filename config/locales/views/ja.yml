@@ -31,6 +31,12 @@ ja:
       new: "アカウント作成"
       create: "アカウント作成"
       update: "アカウント編集"
+    indicator:
+      index: "改善指標一覧"
+      edit: "改善指標編集"
+      new: "改善指標作成"
+      create: "改善指標作成"
+      update: "改善指標編集"
     session:
       login: "ログイン"
       logout: "ログアウト"

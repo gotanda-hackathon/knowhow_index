@@ -10,11 +10,11 @@ class IndicatorsController < ApplicationController
   def index
     condition = current_user.get_search_condition(code: 'indicator', params: search_params.to_unsafe_h)
     @search_form = IndicatorSearchForm.new(condition)
-    @ad_media = @search_form.search(current_user).paginated(params[:page]).decorate
+    @indicators = @search_form.search(current_user).paginated(params[:page]).decorate
 
     respond_to do |format|
       format.html
-      format.csv { send_data AdMedium.generate_csv_by(current_user), filename: "ad_media-#{@date}.csv" }
+      format.csv { send_data Indicator.generate_csv_by(current_user), filename: "@indicators-#{@date}.csv" }
     end
   end
 
@@ -66,8 +66,8 @@ class IndicatorsController < ApplicationController
     @ad_medium = AdMedium.find(params[:id])
   end
 
-  def ad_medium_params
-    params.require(:ad_medium).permit(:name, :company_id)
+  def indicator_params
+    params.require(:indicator).permit(:name, :company_id)
   end
 
   def search_params
