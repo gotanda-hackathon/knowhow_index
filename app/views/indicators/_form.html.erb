@@ -2,7 +2,7 @@
   <div class="input-field col s6">
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <p class="red-text text-darken-4"><%= ad_medium.error_messages_for :name %></p>
+    <p class="red-text text-darken-4"><%= @indicator.error_messages_for :name %></p>
   </div>
 </div>
 <%= f.hidden_field :company_id, value: current_user.company.id %>

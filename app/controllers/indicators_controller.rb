@@ -30,14 +30,14 @@ class IndicatorsController < ApplicationController
   end
 
   def new
-    @ad_medium = AdMedium.new
+    @indicator = Indicator.new
   end
 
   def create
-    @ad_medium = AdMedium.new(ad_medium_params)
+    @indicator = Indicator.new(indicator_params)
 
-    if @ad_medium.save
-      redirect_to company_ad_media_url(current_user.company), flash: { green: t('views.flash.create_success') }
+    if @indicator.save
+      redirect_to company_indicator_url(current_user.company), flash: { green: t('views.flash.create_success') }
     else
       flash.now[:red] = t('views.flash.create_danger')
       render :new
@@ -62,8 +62,8 @@ class IndicatorsController < ApplicationController
 
   private
 
-  def set_ad_medium
-    @ad_medium = AdMedium.find(params[:id])
+  def set_indicator
+    @set_indicator = Indicator.find(params[:id])
   end
 
   def indicator_params
