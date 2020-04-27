@@ -7,6 +7,7 @@ Rails:
   Enabled: true
 
 AllCops:
+  NewCops: enable
   Exclude:
     # 自動生成されるファイルや外部ライブラリは制御できないのでチェック対象外
     - bin/**/*
