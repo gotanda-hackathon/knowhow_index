@@ -25,12 +25,13 @@
         </li>
         <li class="<%= category_active %>">
           <%= link_to company_categories_path(current_user.company), class: 'collapsible-header' do %>
-              <i class="material-icons">category</i>
-              <span class="hide-menu"><%= t('views.category.index') %></span>
+            <i class="material-icons">category</i>
+            <span class="hide-menu"><%= t('views.category.index') %></span>
+          <% end %>
         <li class="<%= client_active %>">
           <%= link_to company_clients_path(current_user.company), class: 'collapsible-header' do %>
-              <i class="material-icons">account_box</i>
-              <span class="hide-menu"><%= t('views.client.index') %></span>
+            <i class="material-icons">account_box</i>
+            <span class="hide-menu"><%= t('views.client.index') %></span>
           <% end %>
         </li>
         <% if current_user.administrator? %>
