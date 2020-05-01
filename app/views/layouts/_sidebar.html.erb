@@ -28,6 +28,7 @@
             <i class="material-icons">category</i>
             <span class="hide-menu"><%= t('views.category.index') %></span>
           <% end %>
+        </li>
         <li class="<%= client_active %>">
           <%= link_to company_clients_path(current_user.company), class: 'collapsible-header' do %>
             <i class="material-icons">account_box</i>
