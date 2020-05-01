@@ -1,0 +1,20 @@
+<% clients.each.with_index(1) do |client, i| %>
+    <tr id="client_<%= client.id %>">
+      <td><%= i %></td>
+      <td><%= client.name %></td>
+      <% if current_user.grader? %>
+          <td id="edit_btn_<%= client.id %>">
+            <%= link_to edit_company_client_path(current_user.company, client), class: "btn green" do %>
+                <%= t('views.default.edit') %>
+                <i class="material-icons right">edit</i>
+            <% end %>
+          </td>
+          <td id="delete_btn_<%= client.id %>">
+            <%= link_to company_client_path(current_user.company, client), method: :delete, data: { confirm: t('messages.destroy_confirm') }, class: "btn red" do %>
+                <%= t('views.default.destroy') %>
+                <i class="material-icons right">delete</i>
+            <% end %>
+          </td>
+      <% end %>
+    </tr>
+<% end %>
