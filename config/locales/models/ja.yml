@@ -19,6 +19,15 @@ ja:
       ad_medium:
         <<: *default
         name: 広告媒体名
+<<<<<<< HEAD
+=======
+      category:
+        <<: *default
+        name: カテゴリ名
+      client:
+        <<: *default
+        name: クライアント名
+>>>>>>> 13818d7007f627d3b08f9e54c00b7c473848c4a8
       indicator:
         <<: *default
         name: 改善指標名

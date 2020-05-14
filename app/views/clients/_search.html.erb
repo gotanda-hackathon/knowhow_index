@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="d-flex align-items-center">
+          <div>
+            <h5 class="card-title"><%= t('views.client.index') %></h5>
+          </div>
+        </div>
+        <h5 id="clients_count"><%= clients.total_count if clients %> 件</h5>
+        <%= form_with scope: :search_form, url: company_clients_path(current_user.company), method: :get, local: true do |f| %>
+            <div class="row">
+              <div class="input-field col s4">
+                <%= f.text_field :name, id: 'name' %>
+                <%= f.label Client.human_attribute_name(:name), for: :name %>
+              </div>
+            </div>
+            <div class="right-align">
+              <%= button_tag type: 'submit', class: "btn orange" do %>
+                  <span><%= t('views.default.search') %></span>
+                  <i class="material-icons right">search</i>
+              <% end %>
+              <% if current_user.grader? %>
+                  <%= link_to new_company_client_path(current_user.company), class: "btn blue" do %>
+                      <span><%= t('views.default.new') %></span>
+                      <i class="material-icons right">add</i>
+                  <% end %>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
