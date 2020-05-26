@@ -25,6 +25,18 @@ ja:
       new: "広告媒体作成"
       create: "広告媒体作成"
       update: "広告媒体編集"
+    category:
+      index: "カテゴリ一覧"
+      edit: "カテゴリ編集"
+      new: "カテゴリ作成"
+      create: "カテゴリ作成"
+      update: "カテゴリ編集"
+    client:
+      index: "クライアント一覧"
+      edit: "クライアント編集"
+      new: "クライアント作成"
+      create: "クライアント作成"
+      update: "クライアント編集"
     user:
       index: "アカウント一覧"
       edit: "アカウント編集"

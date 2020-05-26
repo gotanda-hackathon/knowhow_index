@@ -19,6 +19,12 @@ ja:
       ad_medium:
         <<: *default
         name: 広告媒体名
+      category:
+        <<: *default
+        name: カテゴリ名
+      client:
+        <<: *default
+        name: クライアント名
       user:
         <<: *default
         administrator: 管理者権限

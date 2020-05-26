@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :companies do
     resources :users, expect: [:show], concerns: :csv_importable
     resources :ad_media, expect: [:show], concerns: :csv_importable
+    resources :categories, expect: [:show], concerns: :csv_importable
+    resources :clients, expect: [:show], concerns: :csv_importable
     resources :creatives, expect: [:show], concerns: :csv_importable
   end
 
@@ -23,8 +25,10 @@ Rails.application.routes.draw do
     resources :users, expect: [:show]
   end
 
+  resources :creatives do
     resources :companies, expect: [:show], concerns: :csv_importable
     resources :creatives, expect: [:show], concerns: :csv_importable
+  end
 
   match '*path', to: 'application#error404', via: :all
 end
