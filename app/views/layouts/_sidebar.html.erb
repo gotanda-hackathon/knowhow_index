@@ -3,6 +3,7 @@
   ad_medium_active = params[:controller] == 'ad_media' ? 'active' : ''
   category_active = params[:controller] == 'categories' ? 'active' : ''
   client_active = params[:controller] == 'clients' ? 'active' : ''
+  indicator_active = params[:controller] == 'indicator_active' ? 'active' : ''
   admin_company_active = params[:controller] == 'admin/companies' ? 'active' : ''
   admin_user_active = params[:controller] == 'admin/users' ? 'active' : ''
 %>
@@ -33,6 +34,12 @@
           <%= link_to company_clients_path(current_user.company), class: 'collapsible-header' do %>
             <i class="material-icons">account_box</i>
             <span class="hide-menu"><%= t('views.client.index') %></span>
+          <% end %>
+        </li>
+        <li class="<%= indicator_active %>">
+          <%= link_to company_indicators_path(current_user.company), class: 'collapsible-header' do %>
+            <i class="material-icons">timeline</i>
+            <span class="hide-menu"><%= t('views.indicator.index') %></span>
           <% end %>
         </li>
         <% if current_user.administrator? %>

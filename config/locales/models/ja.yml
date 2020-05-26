@@ -25,6 +25,9 @@ ja:
       client:
         <<: *default
         name: クライアント名
+      indicator:
+        <<: *default
+        name: 改善指標名
       user:
         <<: *default
         administrator: 管理者権限
