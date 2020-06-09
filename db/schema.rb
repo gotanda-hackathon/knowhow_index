@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_134812) do
+ActiveRecord::Schema.define(version: 2020_06_25_224938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Indicators", comment: "改善指標マスターテーブル", force: :cascade do |t|
+    t.string "name", null: false, comment: "改善指標名"
+    t.bigint "company_id", null: false, comment: "企業ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_Indicators_on_company_id"
+  end
 
   create_table "ad_media", comment: "広告媒体マスターテーブル", force: :cascade do |t|
     t.string "name", null: false, comment: "媒体名"
@@ -54,6 +62,15 @@ ActiveRecord::Schema.define(version: 2020_03_27_134812) do
     t.integer "company_id", null: false, comment: "企業ID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "company_id"], name: "index_creatives_on_name_and_company_id", unique: true
+  end
+
+  create_table "indicators", comment: "改善指標マスターテーブル", force: :cascade do |t|
+    t.string "name", null: false, comment: "改善指標名"
+    t.bigint "company_id", null: false, comment: "企業ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_indicators_on_company_id"
   end
 
   create_table "sql_conditions", comment: "検索条件テーブル", force: :cascade do |t|

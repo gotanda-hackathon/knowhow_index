@@ -10,6 +10,10 @@
 #  updated_at         :datetime         not null
 #  company_id(企業ID) :integer          not null
 #
+# Indexes
+#
+#  index_creatives_on_name_and_company_id  (name,company_id) UNIQUE
+#
 class Creative < ApplicationRecord
   include CompanyMatchable
 
