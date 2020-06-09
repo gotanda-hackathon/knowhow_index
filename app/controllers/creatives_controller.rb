@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreativesController < ApplicationController
   before_action :set_creative, only: %i[edit update destroy]
   before_action :not_accessible_different_company_data, only: %i[edit update destroy]
