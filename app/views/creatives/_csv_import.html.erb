@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <%= form_with url: csv_import_company_creatives_path(current_user.company), multipart: :true, local: true do %>
+          <div class="file-field input-field">
+            <div class="btn grey lighten-1">
+              <span><%= t('views.default.csv_attachment') %></span>
+              <i class="material-icons right">attachment</i>
+              <%= file_field_tag :file %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+          <%= button_tag type: 'submit', class: 'btn blue m-r-10' do %>
+            <span><%= t('views.default.csv_import') %></span>
+            <i class="material-icons right">cloud_upload</i>
+          <% end %>
+          <%= link_to company_creatives_path(current_user.company, format: :csv), class: 'btn green' do %>
+            <span><%= t('views.default.csv_export') %></span>
+            <i class="material-icons right">cloud_download</i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

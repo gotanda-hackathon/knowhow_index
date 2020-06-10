@@ -43,6 +43,12 @@ ja:
       new: "アカウント作成"
       create: "アカウント作成"
       update: "アカウント編集"
+    creative:
+      index: "クリエイティブ一覧"
+      edit: "クリエイティブ編集"
+      new: "クリエイティブ作成"
+      create: "クリエイティブ作成"
+      update: "クリエイティブ編集"
     session:
       login: "ログイン"
       logout: "ログアウト"
