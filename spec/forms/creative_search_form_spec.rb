@@ -20,24 +20,24 @@ RSpec.describe CreativeSearchForm, type: :model do
 
     context '何も渡さないとき' do
       let(:search_condition) { nil }
-      let!(:creative1) { FactoryBot.create(:creative, company: current_user.company) }
-      let!(:creative2) { FactoryBot.create(:creative) }
-      let!(:creative3) { FactoryBot.create(:creative, company: current_user.company) }
+      let!(:creative1) { FactoryBot.create(:creatives, company: current_user.company) }
+      let!(:creative2) { FactoryBot.create(:creatives) }
+      let!(:creative3) { FactoryBot.create(:creatives, company: current_user.company) }
 
-      it 'ログインアカウントと同じ企業に紐づくAdMediumが作成順に返ること' do
+      it 'ログインアカウントと同じ企業に紐づくCreativeが作成順に返ること' do
         aggregate_failures do
           expect(searched_creatives[0].id).to eq creative1.id
           expect(searched_creatives[1].id).to eq creative3.id
         end
       end
 
-      it 'ログインアカウントと同じ企業に紐づくAdMediumが全件返ること' do
+      it 'ログインアカウントと同じ企業に紐づくCreativeが全件返ること' do
         expect(searched_cratives.count).to eq 2
       end
     end
 
     context 'nameで絞り込むとき' do
-      let!(:creative) { FactoryBot.create(:creative, name: 'exist_name', company: current_user.company) }
+      let!(:creatives) { FactoryBot.create(:creatives, name: 'exist_name', company: current_user.company) }
 
       before do
         FactoryBot.create(:creative, name: 'exist_name')
@@ -46,7 +46,7 @@ RSpec.describe CreativeSearchForm, type: :model do
       context '存在するnameで検索するとき' do
         let(:search_condition) { { name: 'exist_name' } }
 
-        it 'ログインアカウントと同じ企業に紐づくAdMediumで一致するnameのものだけ返ること' do
+        it 'ログインアカウントと同じ企業に紐づくCreativeで一致するnameのものだけ返ること' do
           aggregate_failures do
             expect(searched_creatives.count).to eq 1
             expect(searched_creatives[0].id).to eq creative.id
