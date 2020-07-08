@@ -3,9 +3,7 @@
 class UserSearchForm
   include ActiveModel::Model
 
-  attr_accessor :user_ids
-  attr_accessor :email
-  attr_accessor :grader
+  attr_accessor :user_ids, :email, :grader
 
   def search(current_user)
     records = User.same_company_with(current_user)

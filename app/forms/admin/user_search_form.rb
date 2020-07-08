@@ -3,11 +3,7 @@
 class Admin::UserSearchForm
   include ActiveModel::Model
 
-  attr_accessor :user_ids
-  attr_accessor :company_ids
-  attr_accessor :email
-  attr_accessor :grader
-  attr_accessor :administrator
+  attr_accessor :user_ids, :company_ids, :email, :grader, :administrator
 
   def search
     records = User.includes(:company).all
